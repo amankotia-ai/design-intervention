@@ -12,10 +12,10 @@ export const XRStudiosPage: React.FC = () => {
       {/* Header */}
       <motion.section 
         ref={heroRef}
-        className="w-screen flex items-center justify-center relative overflow-hidden"
+        className="w-full flex items-center justify-center relative overflow-hidden"
         style={{ backgroundColor: 'rgba(241, 95, 34, 0.05)' }}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center pt-40 pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-40 pb-20 w-full">
           {/* Big XR Icon */}
           <motion.div
             className="flex justify-center mb-12"

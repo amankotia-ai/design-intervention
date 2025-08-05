@@ -25,6 +25,7 @@ import { projectDetails } from './data/projectDetails';
 
 const Navigation = ({ currentPage, setCurrentPage }: { currentPage: string; setCurrentPage: (page: string) => void }) => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const navItems = [
     { id: 'portfolio', label: 'Work' },
@@ -35,6 +36,16 @@ const Navigation = ({ currentPage, setCurrentPage }: { currentPage: string; setC
   const serviceItems = [
     { id: 'xr-studios', label: 'XR Studios', description: 'Extended Reality studios and corporate environments' }
   ];
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleMobileNavClick = (pageId: string) => {
+    setCurrentPage(pageId);
+    setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
+  };
 
   return (
     <nav className="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
@@ -133,14 +144,80 @@ const Navigation = ({ currentPage, setCurrentPage }: { currentPage: string; setC
           
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button className="text-gray-600 hover:text-[#F15F22] transition-colors">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+            <button 
+              onClick={handleMobileMenuToggle}
+              className="text-gray-600 hover:text-[#F15F22] transition-colors p-2"
+            >
+              {isMobileMenuOpen ? (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40" onClick={handleMobileMenuToggle}>
+          <div className="fixed top-16 left-0 right-0 bg-white border-b border-gray-200 shadow-lg" onClick={(e) => e.stopPropagation()}>
+            <div className="px-6 py-4 space-y-4">
+              {/* Main Navigation Items */}
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleMobileNavClick(item.id)}
+                  className={`block w-full text-left py-3 text-base font-normal transition-colors ${
+                    currentPage === item.id
+                      ? 'text-[#F15F22]'
+                      : 'text-gray-600 hover:text-[#F15F22]'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+              
+              {/* Services Section */}
+              <div className="border-t border-gray-200 pt-4">
+                <div className="text-sm font-medium text-gray-500 mb-3">Services</div>
+                {serviceItems.map((service) => (
+                  <button
+                    key={service.id}
+                    onClick={() => handleMobileNavClick(service.id)}
+                    className={`block w-full text-left py-3 transition-colors ${
+                      currentPage === service.id
+                        ? 'text-[#F15F22]'
+                        : 'text-gray-600 hover:text-[#F15F22]'
+                    }`}
+                  >
+                    <div className="font-medium">{service.label}</div>
+                    <div className="text-sm text-gray-500">{service.description}</div>
+                  </button>
+                ))}
+              </div>
+              
+              {/* Blog */}
+              <div className="border-t border-gray-200 pt-4">
+                <button
+                  onClick={() => handleMobileNavClick('blog')}
+                  className={`block w-full text-left py-3 text-base font-normal transition-colors ${
+                    currentPage === 'blog'
+                      ? 'text-[#F15F22]'
+                      : 'text-gray-600 hover:text-[#F15F22]'
+                  }`}
+                >
+                  Blog
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
@@ -823,7 +900,7 @@ function App() {
         {renderPage()}
       </main>
       <footer className="bg-black text-white py-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-12">
             <div>
               <div className="flex items-center mb-6">

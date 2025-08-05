@@ -160,12 +160,12 @@ export const BlogPage: React.FC<BlogPageProps> = ({ className = '', onArticleCli
       {/* Hero Section */}
       <motion.section 
         ref={heroRef}
-        className="w-screen flex items-center justify-center bg-white"
+        className="w-full flex items-center justify-center bg-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: heroInView ? 1 : 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center pt-40 pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-40 pb-20 w-full">
           <motion.div
             className="flex items-center justify-center text-lg mb-8"
             style={{ color: '#F15F22' }}

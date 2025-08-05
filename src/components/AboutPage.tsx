@@ -148,9 +148,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="w-screen flex items-center justify-center bg-white relative overflow-hidden"
+        className="w-full flex items-center justify-center bg-white relative overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center pt-40 pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-40 pb-20 w-full">
           <motion.div
             className="flex items-center justify-center text-lg mb-8"
             style={{ color: '#F15F22' }}

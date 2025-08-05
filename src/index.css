@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent horizontal scroll on mobile */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 /* Custom scrollbar hiding utility */
 .scrollbar-hide {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
@@ -28,5 +34,16 @@
   }
   100% {
     transform: translateX(-33.333%);
+  }
+}
+
+/* Responsive width utilities */
+.w-screen-mobile {
+  width: 100vw;
+}
+
+@media (min-width: 768px) {
+  .w-screen-mobile {
+    width: 100vw;
   }
 }

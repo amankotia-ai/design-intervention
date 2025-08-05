@@ -30,12 +30,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <motion.section 
       ref={ref}
-      className={`w-screen flex items-center justify-center ${backgroundColor} ${className}`}
+      className={`w-full flex items-center justify-center ${backgroundColor} ${className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: isInView ? 1 : 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center pt-40 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-40 pb-20 w-full">
         {/* Title */}
         <motion.h1 
           className="text-6xl lg:text-8xl font-normal text-gray-900 mb-8 leading-tight tracking-tight normal-case"
