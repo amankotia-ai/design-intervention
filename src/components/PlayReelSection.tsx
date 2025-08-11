@@ -10,7 +10,7 @@ interface PlayReelSectionProps {
 export const PlayReelSection: React.FC<PlayReelSectionProps> = ({
   title,
   clients,
-  className = ''
+  className = 'pt-8 pb-16 lg:py-24'
 }) => {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -22,7 +22,7 @@ export const PlayReelSection: React.FC<PlayReelSectionProps> = ({
   return (
     <motion.section 
       ref={ref}
-      className={`py-16 backdrop-blur-sm ${className}`}
+      className={`${className} backdrop-blur-sm`}
       style={{
         background: isInView 
           ? 'linear-gradient(135deg, rgba(249, 250, 251, 0.7) 0%, rgba(249, 250, 251, 0.4) 50%, rgba(249, 250, 251, 0.1) 100%)'

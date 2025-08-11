@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Calendar, Users, MapPin, Award, Camera, Play } from 'lucide-react';
+import { ArrowLeft, Calendar, Users, MapPin, Award, Camera } from 'lucide-react';
 
 interface ProjectImage {
   url: string;
@@ -52,8 +52,7 @@ interface ProjectDetailPageProps {
 
 export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ 
   project, 
-  onBackClick, 
-  onRelatedProjectClick 
+  onBackClick
 }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [showImageModal, setShowImageModal] = useState(false);
@@ -112,7 +111,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
       {/* Hero Section */}
       <motion.section 
         ref={heroRef}
-        className="relative pt-56 pb-12 bg-white"
+        className="relative min-h-screen pt-28 pb-12 bg-white flex items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: heroInView ? 1 : 0 }}
         transition={{ duration: 1 }}
@@ -145,7 +144,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
                 {project.tags.map((tag, index) => (
                   <span 
                     key={index}
-                    className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-none"
+                    className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded"
                   >
                     {tag}
                   </span>
@@ -338,43 +337,19 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
                     <div>
                       <p className="text-sm text-gray-500 mb-2">Awards</p>
                       <div className="space-y-2">
-                        {project.awards.map((award, index) => (
-                          <div key={index} className="flex items-center space-x-2">
-                            <Award size={16} className="text-yellow-500" />
-                            <span className="text-sm text-gray-700">{award}</span>
-                          </div>
-                        ))}
+                      {project.awards.map((award, index) => (
+                        <div key={index} className="flex items-start space-x-2">
+                          <Award size={16} className="text-yellow-500 mt-1 flex-shrink-0" />
+                          <span className="text-sm text-gray-700">{award}</span>
+                        </div>
+                      ))}
                       </div>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Team */}
-              {project.team.length > 0 && (
-                <div className="bg-white p-6 rounded-none shadow-sm mt-6">
-                  <h3 className="text-xl font-medium text-black mb-4">Team</h3>
-                  <div className="space-y-3">
-                    {project.team.map((member, index) => (
-                      <div key={index} className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-                          {member.image ? (
-                            <img src={member.image} alt={member.name} className="w-full h-full object-cover rounded-full" />
-                          ) : (
-                            <span className="text-sm font-medium text-gray-600">
-                              {member.name.split(' ').map(n => n[0]).join('')}
-                            </span>
-                          )}
-                        </div>
-                        <div>
-                          <p className="font-medium text-gray-900">{member.name}</p>
-                          <p className="text-sm text-gray-500">{member.role}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              {/* Team section removed as requested */}
             </motion.div>
           </div>
         </div>

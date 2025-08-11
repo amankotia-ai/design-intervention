@@ -221,7 +221,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ className = '', onArticleCli
       {/* Featured Posts Section */}
       <motion.section 
         ref={featuredRef}
-        className="py-24 bg-white"
+        className="py-24 bg-orange-50"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Header */}
@@ -321,7 +321,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ className = '', onArticleCli
                     <span>•</span>
                     <span>{post.readTime}</span>
                   </div>
-                  <div className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-none inline-block">
+                  <div className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded inline-block">
                     {post.category}
                   </div>
                 </div>
@@ -334,12 +334,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ className = '', onArticleCli
       {/* All Posts Section */}
       <motion.section 
         ref={articlesRef}
-        className="py-24"
-        style={{
-          background: articlesInView 
-            ? 'linear-gradient(135deg, rgba(249, 250, 251, 0.7) 0%, rgba(249, 250, 251, 0.4) 50%, rgba(249, 250, 251, 0.1) 100%)'
-            : 'linear-gradient(135deg, rgba(249, 250, 251, 0) 0%, rgba(249, 250, 251, 0) 50%, rgba(249, 250, 251, 0) 100%)'
-        }}
+        className="py-24 bg-white"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Header */}
@@ -491,7 +486,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ className = '', onArticleCli
                     <span className="mx-2">•</span>
                     <span>{post.readTime}</span>
                   </div>
-                  <div className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-none inline-block">
+                  <div className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded inline-block">
                     {post.category}
                   </div>
                 </div>

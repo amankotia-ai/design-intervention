@@ -16,6 +16,12 @@ export { ContactPage } from './ContactPage';
 export { BlogPage } from './BlogPage';
 export { BlogArticlePage } from './BlogArticlePage';
 export { ProjectDetailPage } from './ProjectDetailPage';
+export { FAQSection } from './FAQSection';
+export { StartProjectModal } from './StartProjectModal';
 
 // Individual Service Pages
 export { XRStudiosPage } from './XRStudiosPage'; 
+export { ExhibitionDesignPage } from './ExhibitionDesignPage';
+export { FilmTVProductionPage } from './FilmTVProductionPage';
+export { SpecialtyFabricationPage } from './SpecialtyFabricationPage';
+export { InteriorDesignPage } from './InteriorDesignPage';

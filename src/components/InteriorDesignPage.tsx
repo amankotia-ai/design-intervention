@@ -4,18 +4,18 @@ import { ActivationsSection } from './ActivationsSection';
 import { TestimonialsSection } from './TestimonialsSection';
 import { FAQSection } from './FAQSection';
 
-interface XRStudiosPageProps {
+interface InteriorDesignPageProps {
   onStartProject?: () => void;
 }
 
-export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) => {
+export const InteriorDesignPage: React.FC<InteriorDesignPageProps> = ({ onStartProject }) => {
   return (
     <div className="space-y-0">
       <HeroSection
-        title={<>XR Studios<br />& Environments</>}
-        description="End‑to‑end design and build for XR studios — LED volumes, camera tracking, real‑time rendering, and control rooms integrated for broadcast‑grade production."
-        imageSrc="/assets/images/5896c42d-4610-43a7-8bcc-043184751e98.png"
-        imageAlt="XR studios hero visual"
+        title={<>Interior<br />Design</>}
+        description="Brand-led interiors for offices, studios, and commercial spaces — strategy, spatial planning, bespoke joinery, and execution under one roof."
+        imageSrc="/assets/images/5826ff5d-c71b-481f-8437-e6822f02691e.png"
+        imageAlt="Interior design hero visual"
         leftColClassName="lg:w-5/12"
         rightColClassName="lg:w-7/12 lg:ml-auto lg:mr-[-2rem]"
         imageClassName="w-full h-auto object-contain scale-90 lg:scale-75 origin-center"
@@ -24,8 +24,8 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
 
       <ActivationsSection 
         className="mt-24"
-        label="(XR Highlights)"
-        paragraph="XR studios for newsrooms, corporate comms, and content creators — spatial design, LED stages, Unreal/Disguise pipelines, and training."
+        label="(Interior Highlights)"
+        paragraph="Workplace strategy, collaborative zones, material palettes, acoustic control, and lighting integration — designed for performance and brand expression."
       />
 
       {/* Capabilities Section */}
@@ -35,16 +35,17 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
           <div className="grid lg:grid-cols-2 gap-20 mb-20 items-start">
             {/* Left Column - Header */}
             <div className="flex items-center text-lg font-normal" style={{ color: '#F15F22' }}>
-              <span>(XR Capabilities)</span>
+              <span>(Interior Capabilities)</span>
             </div>
 
             {/* Right Column - Large Text */}
             <div>
               <h2 className="text-4xl lg:text-5xl font-normal text-black leading-tight mb-8">
-                Virtual Production,<br />Real‑world Results
+                Human‑centric Spaces<br />That Work Beautifully
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                We design XR spaces that are technically precise and operator‑friendly — optimised for acoustics, sightlines, lighting, and fast on‑air workflows.
+                We design interior environments that balance aesthetics with ergonomics and operations. 
+                From concept to build, our team ensures every space performs — day one and every day.
               </p>
             </div>
           </div>
@@ -54,12 +55,12 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
             <div className="text-left">
               <div className="w-16 h-16 flex items-center justify-start mb-6" style={{ color: '#F15F22' }}>
                 <svg className="w-full h-full" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3 6h18v2H3V6zm2 4h14v2H5v-2zm-2 4h18v2H3v-2z"/>
+                  <path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2V10z"/>
                 </svg>
               </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">LED Volumes & Tracking</h3>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4">Workplace Strategy & Planning</h3>
               <p className="text-gray-600 leading-relaxed">
-                Curved/flat LED stages, pixel mapping, camera tracking systems, and genlock/timecode sync for seamless composites.
+                Zoning, adjacencies, and flows that support collaboration, focus, and brand experiences — backed by data and user insights.
               </p>
             </div>
 
@@ -69,9 +70,21 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
                   <path d="M4 6h16v12H4zM6 8h12v8H6z"/>
                 </svg>
               </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">Rendering & Graphics Pipelines</h3>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4">Bespoke Joinery & Finishes</h3>
               <p className="text-gray-600 leading-relaxed">
-                Unreal/Unity, Disguise, and MOS‑compliant workflows with lower latency, repeatable presets, and show control.
+                Custom furniture, storage systems, and reception elements with durable, premium finishes and integrated lighting.
+              </p>
+            </div>
+
+            <div className="text-left">
+              <div className="w-16 h-16 flex items-center justify-start mb-6" style={{ color: '#F15F22' }}>
+                <svg className="w-full h-full" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3 4h18v2H3zM3 18h18v2H3zM7 8h10v8H7z"/>
+                </svg>
+              </div>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4">MEP Coordination & Acoustics</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Services planned with the design — HVAC, electrical, data, and acoustic treatments aligned for comfort and compliance.
               </p>
             </div>
 
@@ -81,21 +94,9 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
                   <path d="M12 2l4 7-4 7-4-7 4-7zm6 13l4 7H2l4-7h12z"/>
                 </svg>
               </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">Acoustics, Lighting & Control</h3>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4">Sustainable Materials & Wellness</h3>
               <p className="text-gray-600 leading-relaxed">
-                Spatial acoustics, broadcast lighting layouts, power/data planning, and ergonomic control rooms.
-              </p>
-            </div>
-
-            <div className="text-left">
-              <div className="w-16 h-16 flex items-center justify-start mb-6" style={{ color: '#F15F22' }}>
-                <svg className="w-full h-full" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3 6h18v2H3V6zm2 4h14v2H5v-2zm-2 4h18v2H3v-2z"/>
-                </svg>
-              </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">Training & Post‑Install Support</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Operator training, SOPs, and maintenance so your team can deliver reliably day after day.
+                Low‑VOC finishes, daylighting, biophilic elements, and material choices that enhance wellbeing and longevity.
               </p>
             </div>
           </div>
@@ -114,11 +115,12 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
               </div>
 
               <h2 className="text-4xl lg:text-5xl font-normal text-gray-900 mb-8 leading-tight">
-                Built on strong foundations
+                From Strategy to Build
               </h2>
 
               <p className="text-lg text-gray-600 mb-12 leading-relaxed">
-                XR studios succeed when spatial design and technology integrate seamlessly. Our process aligns objectives, workflow, and tooling to deliver broadcast‑ready environments.
+                We align brand, culture, and operations to design spaces that are beautiful, robust, and practical. 
+                Our integrated team manages drawings, vendor coordination, and execution.
               </p>
 
               <hr className="border-gray-300 mb-12" />
@@ -127,33 +129,33 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
               <div className="space-y-12">
                 <div className="grid grid-cols-5 gap-6 items-start">
                   <div className="col-span-2">
-                    <h3 className="font-semibold text-gray-900 text-base">Discovery & Specification</h3>
+                    <h3 className="font-semibold text-gray-900 text-base">Briefing & Concept Design</h3>
                   </div>
                   <div className="col-span-3">
                     <p className="text-gray-600 leading-relaxed">
-                      Align content goals, space constraints, show formats, tracking and render needs. Define pixel pitches, optics, and IO.
+                      Understand people, workflows, and brand. Translate into moodboards, layouts, and material directions.
                     </p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-5 gap-6 items-start">
                   <div className="col-span-2">
-                    <h3 className="font-semibold text-gray-900 text-base">Design & Simulation</h3>
+                    <h3 className="font-semibold text-gray-900 text-base">Detailed Design & BOQs</h3>
                   </div>
                   <div className="col-span-3">
                     <p className="text-gray-600 leading-relaxed">
-                      Plans, elevations, and virtual previs for sightlines, acoustics, lighting, and render performance.
+                      Technical drawings, services coordination, specifications, and BOQs ready for procurement and build.
                     </p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-5 gap-6 items-start">
                   <div className="col-span-2">
-                    <h3 className="font-semibold text-gray-900 text-base">Integration & Commissioning</h3>
+                    <h3 className="font-semibold text-gray-900 text-base">Execution & Handover</h3>
                   </div>
                   <div className="col-span-3">
                     <p className="text-gray-600 leading-relaxed">
-                      Install LED and tracking, configure render pipelines, calibrate, train operators, and hand over SOPs.
+                      Site supervision, quality checks, and phased delivery to ensure minimal downtime and a clean handover.
                     </p>
                   </div>
                 </div>
@@ -164,7 +166,7 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
             <div className="relative overflow-hidden bg-transparent aspect-square lg:aspect-auto lg:h-full lg:min-h-[600px] rounded-none">
               <div
                 className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('/assets/images/5896c42d-4610-43a7-8bcc-043184751e98.png')" }}
+                style={{ backgroundImage: "url('/assets/images/5826ff5d-c71b-481f-8437-e6822f02691e.png')" }}
               ></div>
             </div>
           </div>
@@ -174,28 +176,28 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
       {/* Testimonials Section */}
       <TestimonialsSection
         breadcrumb="Testimonials"
-        title="What partners say about our XR work"
+        title="What partners say about our interior projects"
         testimonials={[
           {
             quote:
-              'The studio design improved our on‑air workflow and consistency. The integration was meticulous and on schedule.',
-            authorName: 'N. Rao',
-            authorTitle: 'Broadcast Ops Lead',
+              'They balanced brand aesthetics with practical needs — the space feels premium and works brilliantly for the team.',
+            authorName: 'R. Gupta',
+            authorTitle: 'Admin & Facilities',
             company: 'CNBC TV18'
           },
           {
             quote:
-              'Tracking and LED calibration were spot on. Our team went on‑air with confidence from day one.',
-            authorName: 'P. Singh',
-            authorTitle: 'Technical Director',
-            company: 'ET Now'
+              'Detailing and material selection were on point. Execution was smooth, with minimal disruption to operations.',
+            authorName: 'S. Iyer',
+            authorTitle: 'Project Manager',
+            company: 'Pidilite'
           },
           {
             quote:
-              'Clear documentation and training. The space is robust, quiet, and looks fantastic on camera.',
-            authorName: 'K. Desai',
-            authorTitle: 'Studio Manager',
-            company: 'Adani'
+              'Our studio upgrade improved acoustics and lighting dramatically. The team delivered exactly as promised.',
+            authorName: 'A. Verma',
+            authorTitle: 'Studio Lead',
+            company: 'Welspun'
           }
         ]}
         className="mt-16 lg:mt-24"
@@ -204,29 +206,29 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
       {/* FAQ Section */}
       <FAQSection
         breadcrumb="FAQ"
-        title="XR Studios — FAQs"
-        subtitle="Key questions on XR planning, LED volumes, and integrations"
+        title="Interior Design — FAQs"
+        subtitle="Planning, procurement and delivery timelines"
         backgroundColor="bg-white"
         items={[
           {
-            question: 'What space and ceiling height do we need for an XR studio?',
+            question: 'What is a typical office fit‑out timeline?',
             answer:
-              'Ideal heights are 14–20 ft to accommodate LED volumes, lighting and truss. We assess sightlines, throw distances and access to propose workable layouts for smaller spaces too.'
+              'Small studios can complete in 6–8 weeks; larger offices take 10–16 weeks depending on detailed design, approvals, procurement and phasing on site.'
           },
           {
-            question: 'Which render engine and tracking do you support?',
+            question: 'Can you work in an occupied space?',
             answer:
-              'We work with Unreal/Unity pipelines and support camera tracking systems commonly used in broadcast and virtual production. We recommend based on content, budget and latency targets.'
+              'Yes. We plan phasing, night works and temporary partitions to minimise disruption. Safety and cleanliness protocols are followed strictly.'
           },
           {
-            question: 'How long does an XR studio build take?',
+            question: 'Do you supply furniture and bespoke joinery?',
             answer:
-              'Typical programs run 8–12 weeks from sign‑off to commissioning, depending on LED lead times, acoustics, MEP, and calibration/training.'
+              'We design and supply custom joinery, reception elements and storage. We can also procure loose furniture as per approved specs.'
           },
           {
-            question: 'Do you provide training and SOPs?',
+            question: 'How do you handle MEP coordination?',
             answer:
-              'Yes. We handover SOPs and provide operator training to ensure smooth on‑air workflows and consistent results.'
+              'We coordinate HVAC, electrical, data and acoustics with the design to ensure compliance, comfort and clean integrations.'
           }
         ]}
       />
@@ -235,10 +237,10 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
       <section className="py-24 text-white" style={{ backgroundColor: '#F15F22' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl lg:text-5xl font-normal mb-8 leading-tight">
-            Ready to build your XR studio?
+            Designing a new office or studio?
           </h2>
           <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Let’s plan, integrate, and commission a production‑ready XR environment tailored to your content.
+            Let’s craft a space that reflects your brand and supports your people — beautifully and efficiently.
           </p>
           <button 
             className="bg-white text-black px-8 py-3 font-normal hover:bg-white/90 transition-colors"
@@ -251,3 +253,5 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
     </div>
   );
 };
+
+

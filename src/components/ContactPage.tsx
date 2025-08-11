@@ -51,7 +51,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
     message: ''
   });
 
-  const [hoveredTeamMember, setHoveredTeamMember] = useState<string | null>(null);
+  // Removed unused hoveredTeamMember state to satisfy linter
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const projectTypes = [
@@ -83,49 +83,50 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
   const offices: ContactInfo[] = [
     {
       title: 'Mumbai Head Office',
-      location: 'Mumbai, Maharashtra',
+      location: 'Andheri West, Mumbai',
       address: [
-        'Andheri East, Mumbai - 400069',
-        'Maharashtra, India'
+        '307, Kilfire Premises, Daliya Industrial Estate',
+        'Near Lotus Business Park, Andheri West',
+        'Mumbai - 53'
       ],
-      phone: '+91 98765 43210',
-      email: 'mumbai@designintervention.biz',
+      phone: '+91 98200 51503',
+      email: 'amit@designintervention.biz',
       hours: '10:00 AM - 7:00 PM IST, Monday - Friday'
     }
   ];
 
   const teamMembers: TeamMember[] = [
     {
-      name: 'Rajesh Kumar',
-      role: 'Founder & Creative Director',
-      email: 'rajesh@designintervention.biz',
-      phone: '+91 98765 43210',
-      specialties: ['Creative Strategy', 'XR Studios', 'Innovation'],
-      image: '/assets/images/xr.png'
-    },
-    {
-      name: 'Priya Sharma',
-      role: 'Technical Director',
-      email: 'priya@designintervention.biz',
-      phone: '+91 87654 32109',
-      specialties: ['XR Technology', 'Interactive Systems', 'Technical Implementation'],
-      image: '/assets/images/interactive.png'
-    },
-    {
-      name: 'Amit Patel',
-      role: 'Production Manager',
+      name: 'Amit Pathania',
+      role: 'Director - DI Mumbai',
       email: 'amit@designintervention.biz',
-      phone: '+91 76543 21098',
-      specialties: ['Fabrication', 'Project Management', 'Quality Control'],
-      image: '/assets/images/studio.png'
+      phone: '+91 98200 51503',
+      specialties: ['Design + Tech Leadership', 'Studio Strategy'],
+      image: '/assets/images/Screenshot 2025-08-11 at 10.16.42 PM 1.png'
     },
     {
-      name: 'Sarah Chen',
-      role: 'Design Lead',
-      email: 'sarah@designintervention.biz',
-      phone: '+91 65432 10987',
-      specialties: ['Exhibition Design', 'Brand Experience', 'Spatial Design'],
-      image: '/assets/images/exhibition.png'
+      name: 'Madhura Auddy',
+      role: 'Sr. Manager - Operations',
+      email: 'madhura@designintervention.biz',
+      phone: '+91 87654 32109',
+      specialties: ['Operations', 'Client Servicing'],
+      image: '/assets/images/Screenshot 2025-08-11 at 10.16.02 PM 1.png'
+    },
+    {
+      name: 'Dr. Vijaya Chandak',
+      role: 'Head - Business Development',
+      email: 'vijaya@designintervention.biz',
+      phone: '+91 98765 43210',
+      specialties: ['Business Development', 'Partnerships'],
+      image: '/assets/images/Screenshot 2025-08-11 at 10.12.33 PM 1.png'
+    },
+    {
+      name: 'Sunil Vishwakarma',
+      role: 'Project Manager',
+      email: 'sunil@designintervention.biz',
+      phone: '+91 76543 21098',
+      specialties: ['Project Management', 'On-site Execution'],
+      image: '/assets/images/Screenshot 2025-08-11 at 10.15.07 PM 1.png'
     }
   ];
 
@@ -472,8 +473,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
                   <div>
                     <h3 className="text-xl font-medium text-gray-900 mb-4">General Inquiries</h3>
                     <div className="space-y-2 text-gray-600">
-                      <p>projects@designintervention.biz</p>
-                      <p>+91 98765 43210</p>
+                      <p>amit@designintervention.biz</p>
+                      <p>+91 98200 51503</p>
+                      <p>
+                        <a href="https://www.designintervention.biz" className="underline hover:no-underline" target="_blank" rel="noreferrer">
+                          www.designintervention.biz
+                        </a>
+                      </p>
                     </div>
                   </div>
 
@@ -487,13 +493,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
                     <p className="text-gray-600">We typically respond to all inquiries within 24 hours during business days.</p>
                   </div>
 
-                  <motion.div 
-                    className="bg-white p-6 rounded-none border border-gray-100"
-                    whileHover={{ 
-                      borderColor: '#F15F22',
-                      transition: { duration: 0.3 }
-                    }}
-                  >
+                  <div>
                     <h3 className="text-lg font-medium text-gray-900 mb-3">Company Profile</h3>
                     <p className="text-gray-600 mb-4">Download our detailed company profile with case studies and client references.</p>
                     <motion.button 
@@ -512,7 +512,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
                         →
                       </motion.span>
                     </motion.button>
-                  </motion.div>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
@@ -626,7 +626,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
 
           {/* Team Grid */}
           <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: teamInView ? 1 : 0 }}
             transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -647,30 +647,21 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
                 }}
               >
                 <motion.div 
-                  className="h-64 rounded-none relative overflow-hidden mb-4"
-                  style={{ 
-                    backgroundImage: `url(${member.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
-                  }}
+                  className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-64 lg:h-64 mx-auto mb-4 rounded-full overflow-hidden bg-transparent"
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="absolute inset-0 bg-black/20" />
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-contain rounded-full bg-transparent"
+                  />
                 </motion.div>
 
-                <div>
-                  <div className="flex items-center space-x-2 mb-2">
-                    <h3 className="text-lg font-medium text-gray-900">
-                      {member.name}
-                    </h3>
-                  </div>
-                  
-                  <div className="space-y-2 text-xs text-gray-600">
-                    <p className="text-sm font-medium text-gray-900">{member.role}</p>
-                    <p>{member.email}</p>
-                    <p>{member.phone}</p>
-                  </div>
+                <div className="text-center">
+                  <h3 className="text-lg font-medium text-gray-900 mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-sm text-gray-600">{member.role}</p>
                 </div>
               </motion.div>
             ))}

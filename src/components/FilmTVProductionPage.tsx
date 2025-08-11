@@ -4,28 +4,30 @@ import { ActivationsSection } from './ActivationsSection';
 import { TestimonialsSection } from './TestimonialsSection';
 import { FAQSection } from './FAQSection';
 
-interface XRStudiosPageProps {
+interface FilmTVProductionPageProps {
   onStartProject?: () => void;
 }
 
-export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) => {
+export const FilmTVProductionPage: React.FC<FilmTVProductionPageProps> = ({ onStartProject }) => {
   return (
     <div className="space-y-0">
       <HeroSection
-        title={<>XR Studios<br />& Environments</>}
-        description="End‑to‑end design and build for XR studios — LED volumes, camera tracking, real‑time rendering, and control rooms integrated for broadcast‑grade production."
-        imageSrc="/assets/images/5896c42d-4610-43a7-8bcc-043184751e98.png"
-        imageAlt="XR studios hero visual"
+        title={<>Film & TV<br />Production</>}
+        description="Production design support, specialty fabrication, and on‑set delivery for film, TV and streaming—built to schedule and built to last."
+        imageSrc="/assets/images/0db1632b-e229-43d9-aa97-4b0530471c61 (1).png"
+        imageAlt="Film and TV production hero visual"
         leftColClassName="lg:w-5/12"
         rightColClassName="lg:w-7/12 lg:ml-auto lg:mr-[-2rem]"
         imageClassName="w-full h-auto object-contain scale-90 lg:scale-75 origin-center"
-        buttons={[{ text: 'Start Your Project', onClick: () => onStartProject && onStartProject() }]}
+        buttons={[
+          { text: 'Start Your Production', onClick: () => onStartProject && onStartProject() },
+        ]}
       />
 
       <ActivationsSection 
         className="mt-24"
-        label="(XR Highlights)"
-        paragraph="XR studios for newsrooms, corporate comms, and content creators — spatial design, LED stages, Unreal/Disguise pipelines, and training."
+        label="(Production Highlights)"
+        paragraph="From hero sets to modular backdrops and specialty props—we design, fabricate and deliver for features, series and commercials."
       />
 
       {/* Capabilities Section */}
@@ -35,16 +37,18 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
           <div className="grid lg:grid-cols-2 gap-20 mb-20 items-start">
             {/* Left Column - Header */}
             <div className="flex items-center text-lg font-normal" style={{ color: '#F15F22' }}>
-              <span>(XR Capabilities)</span>
+              <span>(Production Capabilities)</span>
             </div>
 
             {/* Right Column - Large Text */}
             <div>
               <h2 className="text-4xl lg:text-5xl font-normal text-black leading-tight mb-8">
-                Virtual Production,<br />Real‑world Results
+                Sets and builds<br />
+                that shoot beautifully
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                We design XR spaces that are technically precise and operator‑friendly — optimised for acoustics, sightlines, lighting, and fast on‑air workflows.
+                We partner with producers and art departments to engineer practical, camera‑ready
+                environments that move fast and look premium on screen.
               </p>
             </div>
           </div>
@@ -54,48 +58,50 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
             <div className="text-left">
               <div className="w-16 h-16 flex items-center justify-start mb-6" style={{ color: '#F15F22' }}>
                 <svg className="w-full h-full" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M4 6h16v12H4V6zm2 2v8h12V8H6z"/>
+                </svg>
+              </div>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4">Production Design Support</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Look development, set planning and technical drawings aligned to the director’s vision
+                and camera language.
+              </p>
+            </div>
+
+            <div className="text-left">
+              <div className="w-16 h-16 flex items-center justify-start mb-6" style={{ color: '#F15F22' }}>
+                <svg className="w-full h-full" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3 7h18v10H3V7zm2 2v6h14V9H5z"/>
+                </svg>
+              </div>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4">Set Fabrication & Scenic</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Carpentry, metal, foam, scenic textures and paint finishes that hold up in close‑ups
+                and wides alike.
+              </p>
+            </div>
+
+            <div className="text-left">
+              <div className="w-16 h-16 flex items-center justify-start mb-6" style={{ color: '#F15F22' }}>
+                <svg className="w-full h-full" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3 7h7l-5.5 4 2.5 7L12 16l-7 4 2.5-7L2 9h7l3-7z"/>
+                </svg>
+              </div>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4">Mechanicals & Special Props</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Interactive elements, rigs and custom props engineered for reliability and safety on set.
+              </p>
+            </div>
+
+            <div className="text-left">
+              <div className="w-16 h-16 flex items-center justify-start mb-6" style={{ color: '#F15F22' }}>
+                <svg className="w-full h-full" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M3 6h18v2H3V6zm2 4h14v2H5v-2zm-2 4h18v2H3v-2z"/>
                 </svg>
               </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">LED Volumes & Tracking</h3>
+              <h3 className="text-2xl font-medium text-gray-900 mb-4">On‑Set Installation & Strike</h3>
               <p className="text-gray-600 leading-relaxed">
-                Curved/flat LED stages, pixel mapping, camera tracking systems, and genlock/timecode sync for seamless composites.
-              </p>
-            </div>
-
-            <div className="text-left">
-              <div className="w-16 h-16 flex items-center justify-start mb-6" style={{ color: '#F15F22' }}>
-                <svg className="w-full h-full" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M4 6h16v12H4zM6 8h12v8H6z"/>
-                </svg>
-              </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">Rendering & Graphics Pipelines</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Unreal/Unity, Disguise, and MOS‑compliant workflows with lower latency, repeatable presets, and show control.
-              </p>
-            </div>
-
-            <div className="text-left">
-              <div className="w-16 h-16 flex items-center justify-start mb-6" style={{ color: '#F15F22' }}>
-                <svg className="w-full h-full" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2l4 7-4 7-4-7 4-7zm6 13l4 7H2l4-7h12z"/>
-                </svg>
-              </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">Acoustics, Lighting & Control</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Spatial acoustics, broadcast lighting layouts, power/data planning, and ergonomic control rooms.
-              </p>
-            </div>
-
-            <div className="text-left">
-              <div className="w-16 h-16 flex items-center justify-start mb-6" style={{ color: '#F15F22' }}>
-                <svg className="w-full h-full" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3 6h18v2H3V6zm2 4h14v2H5v-2zm-2 4h18v2H3v-2z"/>
-                </svg>
-              </div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">Training & Post‑Install Support</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Operator training, SOPs, and maintenance so your team can deliver reliably day after day.
+                Tight turnarounds handled end‑to‑end—transport, install, standby maintenance and efficient strike.
               </p>
             </div>
           </div>
@@ -114,11 +120,12 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
               </div>
 
               <h2 className="text-4xl lg:text-5xl font-normal text-gray-900 mb-8 leading-tight">
-                Built on strong foundations
+                Built for speed and reliability
               </h2>
 
               <p className="text-lg text-gray-600 mb-12 leading-relaxed">
-                XR studios succeed when spatial design and technology integrate seamlessly. Our process aligns objectives, workflow, and tooling to deliver broadcast‑ready environments.
+                A streamlined workflow that keeps departments aligned and days on schedule, without
+                compromising quality on screen.
               </p>
 
               <hr className="border-gray-300 mb-12" />
@@ -127,33 +134,45 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
               <div className="space-y-12">
                 <div className="grid grid-cols-5 gap-6 items-start">
                   <div className="col-span-2">
-                    <h3 className="font-semibold text-gray-900 text-base">Discovery & Specification</h3>
+                    <h3 className="font-semibold text-gray-900 text-base">Brief & Tech Recce</h3>
                   </div>
                   <div className="col-span-3">
                     <p className="text-gray-600 leading-relaxed">
-                      Align content goals, space constraints, show formats, tracking and render needs. Define pixel pitches, optics, and IO.
+                      Align with production design, VFX/stunts and camera; capture dimensions, access
+                      constraints and safety requirements.
                     </p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-5 gap-6 items-start">
                   <div className="col-span-2">
-                    <h3 className="font-semibold text-gray-900 text-base">Design & Simulation</h3>
+                    <h3 className="font-semibold text-gray-900 text-base">Shop Drawings & Approvals</h3>
                   </div>
                   <div className="col-span-3">
                     <p className="text-gray-600 leading-relaxed">
-                      Plans, elevations, and virtual previs for sightlines, acoustics, lighting, and render performance.
+                      Detailed drawings, materials and finishes for quick sign‑off across departments.
                     </p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-5 gap-6 items-start">
                   <div className="col-span-2">
-                    <h3 className="font-semibold text-gray-900 text-base">Integration & Commissioning</h3>
+                    <h3 className="font-semibold text-gray-900 text-base">Fabrication, Pre‑Rig & QA</h3>
                   </div>
                   <div className="col-span-3">
                     <p className="text-gray-600 leading-relaxed">
-                      Install LED and tracking, configure render pipelines, calibrate, train operators, and hand over SOPs.
+                      In‑house build, pre‑fit and camera tests where needed to de‑risk on‑set time.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-5 gap-6 items-start">
+                  <div className="col-span-2">
+                    <h3 className="font-semibold text-gray-900 text-base">Install, Support & Strike</h3>
+                  </div>
+                  <div className="col-span-3">
+                    <p className="text-gray-600 leading-relaxed">
+                      On‑set delivery, standby crew for resets/repairs, and efficient strike and storage.
                     </p>
                   </div>
                 </div>
@@ -164,7 +183,7 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
             <div className="relative overflow-hidden bg-transparent aspect-square lg:aspect-auto lg:h-full lg:min-h-[600px] rounded-none">
               <div
                 className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('/assets/images/5896c42d-4610-43a7-8bcc-043184751e98.png')" }}
+                style={{ backgroundImage: "url('/assets/images/0db1632b-e229-43d9-aa97-4b0530471c61 (1).png')" }}
               ></div>
             </div>
           </div>
@@ -174,28 +193,28 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
       {/* Testimonials Section */}
       <TestimonialsSection
         breadcrumb="Testimonials"
-        title="What partners say about our XR work"
+        title="What crews say about our production work"
         testimonials={[
           {
             quote:
-              'The studio design improved our on‑air workflow and consistency. The integration was meticulous and on schedule.',
-            authorName: 'N. Rao',
-            authorTitle: 'Broadcast Ops Lead',
-            company: 'CNBC TV18'
+              'Their sets were camera‑ready out of the truck—clean builds, smart engineering and zero surprises on shoot days.',
+            authorName: 'M. Gupta',
+            authorTitle: 'Series Producer',
+            company: 'Originals Unit'
           },
           {
             quote:
-              'Tracking and LED calibration were spot on. Our team went on‑air with confidence from day one.',
-            authorName: 'P. Singh',
-            authorTitle: 'Technical Director',
-            company: 'ET Now'
+              'Fast approvals, impeccable finishes and a crew that understands how a set needs to work for camera and actors.',
+            authorName: 'R. Iyer',
+            authorTitle: 'Production Designer',
+            company: 'Feature Film'
           },
           {
             quote:
-              'Clear documentation and training. The space is robust, quiet, and looks fantastic on camera.',
-            authorName: 'K. Desai',
-            authorTitle: 'Studio Manager',
-            company: 'Adani'
+              'Tight timelines met without drama. Reliable partners from recce to strike.',
+            authorName: 'S. Khan',
+            authorTitle: 'Line Producer',
+            company: 'Commercials'
           }
         ]}
         className="mt-16 lg:mt-24"
@@ -204,29 +223,29 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
       {/* FAQ Section */}
       <FAQSection
         breadcrumb="FAQ"
-        title="XR Studios — FAQs"
-        subtitle="Key questions on XR planning, LED volumes, and integrations"
+        title="Film & TV — FAQs"
+        subtitle="Key questions on builds, safety and schedules"
         backgroundColor="bg-white"
         items={[
           {
-            question: 'What space and ceiling height do we need for an XR studio?',
+            question: 'How do you ensure on‑set safety and compliance?',
             answer:
-              'Ideal heights are 14–20 ft to accommodate LED volumes, lighting and truss. We assess sightlines, throw distances and access to propose workable layouts for smaller spaces too.'
+              'We coordinate early with production, stunts and VFX for loads, anchoring and materials. Risk areas are prototyped and documented; on‑site installs follow safety SOPs.'
           },
           {
-            question: 'Which render engine and tracking do you support?',
+            question: 'What are typical lead times for hero sets?',
             answer:
-              'We work with Unreal/Unity pipelines and support camera tracking systems commonly used in broadcast and virtual production. We recommend based on content, budget and latency targets.'
+              'Simple sets can be turned around in 1–2 weeks. Complex builds with special finishes/mechanicals need 3–5+ weeks depending on approvals and availability.'
           },
           {
-            question: 'How long does an XR studio build take?',
+            question: 'Can you work night shifts and tight shoot windows?',
             answer:
-              'Typical programs run 8–12 weeks from sign‑off to commissioning, depending on LED lead times, acoustics, MEP, and calibration/training.'
+              'Yes. We plan manpower and pre‑rig to meet night installs, continuity holds, and rapid strikes as per the call sheet.'
           },
           {
-            question: 'Do you provide training and SOPs?',
+            question: 'Do you supply scenic textures and paint?',
             answer:
-              'Yes. We handover SOPs and provide operator training to ensure smooth on‑air workflows and consistent results.'
+              'We offer full scenic services — textures, aging, specialty coatings — matched to camera tests where required.'
           }
         ]}
       />
@@ -235,19 +254,21 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
       <section className="py-24 text-white" style={{ backgroundColor: '#F15F22' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl lg:text-5xl font-normal mb-8 leading-tight">
-            Ready to build your XR studio?
+            Ready to build your next set?
           </h2>
           <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Let’s plan, integrate, and commission a production‑ready XR environment tailored to your content.
+            From commercials to long‑form, we deliver camera‑ready builds with zero drama.
           </p>
           <button 
             className="bg-white text-black px-8 py-3 font-normal hover:bg-white/90 transition-colors"
             onClick={() => onStartProject && onStartProject()}
           >
-            Start Your Project
+            Start Your Production
           </button>
         </div>
       </section>
     </div>
   );
 };
+
+

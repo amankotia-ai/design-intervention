@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
 interface TeamMember {
@@ -41,12 +41,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
   const statsInView = useInView(statsRef, { once: true, amount: 0.2 });
   const locationInView = useInView(locationRef, { once: true, amount: 0.2 });
 
-  const [hoveredMember, setHoveredMember] = useState<string | null>(null);
+  // Removed unused hoveredMember state to satisfy linter
 
   const values = [
     {
-      title: "Innovation First",
-      description: "We embrace cutting-edge technology and creative solutions to push the boundaries of what's possible in design and fabrication.",
+      title: "Commitment to high-impact exhibition solutions",
+      description: "We design exhibition environments that maximize visibility, outcomes, and brand impact.",
       icon: (
         <svg className="w-12 h-12" viewBox="0 0 24 24" fill="currentColor">
           <path d="M13 3L15.09 8.26L22 9L17 14.14L18.18 21.02L13 18.5L7.82 21.02L9 14.14L4 9L10.91 8.26L13 3Z"/>
@@ -54,8 +54,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
       )
     },
     {
-      title: "Precision Craftsmanship", 
-      description: "Every project reflects our commitment to meticulous attention to detail and uncompromising quality standards.",
+      title: "Focus on audience engagement and brand storytelling", 
+      description: "Every space is crafted to capture attention, communicate your narrative, and drive participation.",
       icon: (
         <svg className="w-12 h-12" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z"/>
@@ -63,8 +63,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
       )
     },
     {
-      title: "Collaborative Partnership",
-      description: "We work closely with our clients, ensuring their vision becomes reality through transparent communication and shared expertise.",
+      title: "Tailored solutions for exhibitors — big or small",
+      description: "From compact booths to large pavilions, we adapt our approach to fit every scale and budget.",
       icon: (
         <svg className="w-12 h-12" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z"/>
@@ -72,8 +72,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
       )
     },
     {
-      title: "Sustainable Future",
-      description: "We're committed to environmentally conscious practices and creating designs that contribute to a sustainable tomorrow.",
+      title: "Unique & innovative solutions combining design and technology",
+      description: "We fuse thoughtful design with cutting‑edge technology to create memorable, measurable experiences.",
       icon: (
         <svg className="w-12 h-12" viewBox="0 0 24 24" fill="currentColor">
           <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
@@ -84,36 +84,36 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
 
   const teamMembers: TeamMember[] = [
     {
-      name: "Rajesh Kumar",
-      role: "Founder & Creative Director",
-      bio: "15+ years in immersive design and fabrication, leading the vision for next-generation experiential spaces.",
-      email: "rajesh@designintervention.biz",
-      phone: "+91 98765 43210",
-      image: "/assets/images/xr.png"
-    },
-    {
-      name: "Priya Sharma",
-      role: "Technical Director",
-      bio: "Expert in XR technologies and interactive systems, ensuring seamless integration of cutting-edge tech.",
-      email: "priya@designintervention.biz",
-      phone: "+91 87654 32109",
-      image: "/assets/images/interactive.png"
-    },
-    {
-      name: "Amit Patel",
-      role: "Production Manager",
-      bio: "Master craftsman with expertise in specialty fabrication and project execution across diverse verticals.",
+      name: "Amit Pathania",
+      role: "Director - DI Mumbai",
+      bio: "Design + Tech leader with 25+ years experience across 500+ projects.",
       email: "amit@designintervention.biz",
-      phone: "+91 76543 21098",
-      image: "/assets/images/studio.png"
+      phone: "+91 98200 51503",
+      image: "/assets/images/Screenshot 2025-08-11 at 10.16.42 PM 1.png"
     },
     {
-      name: "Sarah Chen",
-      role: "Design Lead",
-      bio: "Award-winning designer specializing in exhibition spaces and brand experience environments.",
-      email: "sarah@designintervention.biz",
-      phone: "+91 65432 10987",
-      image: "/assets/images/exhibition.png"
+      name: "Madhura Auddy",
+      role: "Sr. Manager - Operations",
+      bio: "Operations specialist ensuring seamless delivery and client success.",
+      email: "madhura@designintervention.biz",
+      phone: "+91 87654 32109",
+      image: "/assets/images/Screenshot 2025-08-11 at 10.16.02 PM 1.png"
+    },
+    {
+      name: "Dr. Vijaya Chandak",
+      role: "Head - Business Development",
+      bio: "Leads strategic partnerships and business growth.",
+      email: "vijaya@designintervention.biz",
+      phone: "+91 98765 43210",
+      image: "/assets/images/Screenshot 2025-08-11 at 10.12.33 PM 1.png"
+    },
+    {
+      name: "Sunil Vishwakarma",
+      role: "Project Manager",
+      bio: "Drives on-site execution and project management.",
+      email: "sunil@designintervention.biz",
+      phone: "+91 76543 21098",
+      image: "/assets/images/Screenshot 2025-08-11 at 10.15.07 PM 1.png"
     }
   ];
 
@@ -213,13 +213,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
             >
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                 <p>
-                  Founded in 2009, we began with a simple belief: that physical spaces have the power to tell stories, evoke emotions, and create lasting memories. What started as a small design studio has evolved into India's leading immersive experience company.
+                  Over the past two decades, we have excelled across design and production—from news studios and interiors to exhibitions, product and furniture design, and large-scale builds. Our hands-on approach infuses every engagement with a holistic richness that stands apart. With 500+ diverse projects delivered across India’s major cities, we turn complex ideas into outcomes that perform in the real world.
                 </p>
                 <p>
-                  Today, we specialize in XR studios, exhibition design, film & TV production sets, and interactive installations. Our work spans from cutting-edge corporate environments to award-winning exhibition pavilions that have redefined visitor engagement.
+                  Our execution arm began as an in-house unit and has grown into a turnkey partner for leading design and architectural firms. Along the way, we earned national recognition and expanded capabilities across specialty fabrication and premium hospitality interiors. Our content team brings strategy, scripting, production and post together—drawing on deep experience from advertising and film to deliver complete media solutions.
                 </p>
                 <p>
-                  We've had the privilege of working with some of the world's most innovative companies, helping them bring their visions to life through our unique blend of creativity, technology, and craftsmanship.
+                  We also build cutting-edge interactive and immersive experiences—AR/VR, interactive floors and walls, and XR studios. A recent transformational milestone was creating an advanced corporate XR studio for a leading Indian conglomerate, redefining corporate communication with a hybrid of AR and VR. This continues to be our mission: elevating everyday moments into extraordinary memories through the power of design and technology.
                 </p>
               </div>
             </motion.div>
@@ -352,7 +352,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
 
           {/* Team Grid */}
           <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: teamInView ? 1 : 0 }}
             transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -373,30 +373,21 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
                 }}
               >
                 <motion.div 
-                  className="h-64 rounded-none relative overflow-hidden mb-4"
-                  style={{ 
-                    backgroundImage: `url(${member.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
-                  }}
+                  className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-64 lg:h-64 mx-auto mb-4 rounded-full overflow-hidden bg-transparent"
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="absolute inset-0 bg-black/20" />
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-contain rounded-full bg-transparent"
+                  />
                 </motion.div>
 
-                <div>
-                  <div className="flex items-center space-x-2 mb-2">
-                    <h3 className="text-lg font-medium text-gray-900">
-                      {member.name}
-                    </h3>
-                  </div>
-                  
-                  <div className="space-y-2 text-xs text-gray-600">
-                    <p className="text-sm font-medium text-gray-900">{member.role}</p>
-                    <p>{member.email}</p>
-                    <p>{member.phone}</p>
-                  </div>
+                <div className="text-center">
+                  <h3 className="text-lg font-medium text-gray-900 mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-sm text-gray-600">{member.role}</p>
                 </div>
               </motion.div>
             ))}
@@ -504,7 +495,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                 <div>
                   <h3 className="font-medium text-gray-900 mb-2">Mumbai Studio</h3>
-                  <p>Andheri East, Mumbai - 400069<br />Maharashtra, India</p>
+                  <p>
+                    307, Kilfire Premises, Daliya Industrial Estate,<br />
+                    Near Lotus Business Park, Andheri West,<br />
+                    Mumbai - 53
+                  </p>
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900 mb-2">Connect</h3>

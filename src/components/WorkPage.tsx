@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 interface Project {
   id: string;
@@ -22,14 +22,20 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
   const portfolioRef = useRef(null);
   const testimonialsRef = useRef(null);
   
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
+  // Scroll progress not required for current animations
 
   const heroInView = useInView(heroRef, { once: true, amount: 0.3 });
   const portfolioInView = useInView(portfolioRef, { once: true, amount: 0.2 });
   const testimonialsInView = useInView(testimonialsRef, { once: true, amount: 0.2 });
+
+  // Ensure visibility on small screens where IntersectionObserver can be flaky
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  useEffect(() => {
+    const update = () => setIsSmallScreen(window.innerWidth < 768);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
 
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
@@ -39,7 +45,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
   const projects: Project[] = [
     {
       id: '1',
-      title: 'Corporate XR Studio',
+      title: 'Republic Day Parade Tableau – 2012',
       category: 'XR Studios',
       description: 'State-of-the-art extended reality studio with motion capture and virtual production capabilities.',
       image: '/assets/images/xr.png',
@@ -48,7 +54,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
     },
     {
       id: '2', 
-      title: 'Tech Exhibition Pavilion',
+      title: 'ICICI Bank Smart Vault – 2015',
       category: 'Exhibitions',
       description: 'Award-winning interactive exhibition space featuring projection mapping and touchscreen interfaces.',
       image: '/assets/images/exhibition.png',
@@ -57,7 +63,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
     },
     {
       id: '3',
-      title: 'Film Production Set',
+      title: 'Flight – 2021 (Indian Feature Film)',
       category: 'Film & TV',
       description: 'Custom-built production set with modular design and integrated lighting systems.',
       image: '/assets/images/studio.png',
@@ -66,7 +72,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
     },
     {
       id: '4',
-      title: 'Interactive Installation',
+      title: 'PowerGen - Adani',
       category: 'Interactive',
       description: 'Immersive digital installation combining physical and virtual elements.',
       image: '/assets/images/interactive.png',
@@ -75,7 +81,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
     },
     {
       id: '5',
-      title: 'Live Event Stage',
+      title: 'Rising Rajasthan - Adani',
       category: 'Film & TV',
       description: 'Dynamic stage design with LED walls and automated set changes.',
       image: '/assets/images/live.png',
@@ -84,7 +90,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
     },
     {
       id: '6',
-      title: 'Brand Experience Center',
+      title: 'NorthernLights - Shapoorji Pallonji',
       category: 'Exhibitions',
       description: 'Immersive brand storytelling space with multi-sensory experiences.',
       image: '/assets/images/exhibition.png',
@@ -97,8 +103,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
     ? projects 
     : projects.filter(project => project.category === selectedCategory);
 
-  // Subtle parallax effect
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
+  // Subtle parallax effect (disabled for now)
 
   return (
     <div ref={containerRef} className={`${className}`}>
@@ -112,7 +117,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
             className="flex items-center justify-center text-lg mb-8"
             style={{ color: '#F15F22' }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: heroInView ? 1 : 0 }}
+            animate={{ opacity: (heroInView || isSmallScreen) ? 1 : 0 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <span>(Our Work)</span>
@@ -122,8 +127,8 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
             className="text-6xl lg:text-8xl font-normal text-gray-900 mb-8 leading-tight tracking-tight normal-case"
             initial={{ opacity: 0, y: 8 }}
             animate={{ 
-              opacity: heroInView ? 1 : 0,
-              y: heroInView ? 0 : 8
+              opacity: (heroInView || isSmallScreen) ? 1 : 0,
+              y: (heroInView || isSmallScreen) ? 0 : 8
             }}
             transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
@@ -134,7 +139,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
           <motion.p 
             className="text-base font-normal text-gray-600 mb-12 max-w-lg mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
-            animate={{ opacity: heroInView ? 1 : 0 }}
+            animate={{ opacity: (heroInView || isSmallScreen) ? 1 : 0 }}
             transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             Explore our portfolio of immersive installations, cutting-edge studios, and award-winning exhibition designs that push the boundaries of what's possible.
@@ -151,8 +156,8 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
           {/* Header */}
           <div className="grid lg:grid-cols-2 gap-20 mb-16 items-start">
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: portfolioInView ? 1 : 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: (portfolioInView || isSmallScreen) ? 1 : 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
@@ -161,8 +166,8 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: portfolioInView ? 1 : 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: (portfolioInView || isSmallScreen) ? 1 : 0 }}
               transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <h2 className="text-4xl lg:text-5xl font-normal text-black leading-tight mb-8">
@@ -178,10 +183,10 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
           <motion.div 
             className="flex flex-wrap gap-3 mb-12"
             initial={{ opacity: 0 }}
-            animate={{ opacity: portfolioInView ? 1 : 0 }}
+            animate={{ opacity: (portfolioInView || isSmallScreen) ? 1 : 0 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <motion.button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
@@ -204,9 +209,9 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
 
           {/* Projects Grid */}
           <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16"
             initial={{ opacity: 0 }}
-            animate={{ opacity: portfolioInView ? 1 : 0 }}
+            animate={{ opacity: (portfolioInView || isSmallScreen) ? 1 : 0 }}
             transition={{ duration: 1.4, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             {filteredProjects.map((project, index) => (
@@ -215,8 +220,8 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
                 className="group cursor-pointer"
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ 
-                  opacity: portfolioInView ? 1 : 0,
-                  y: portfolioInView ? 0 : 4
+                  opacity: (portfolioInView || isSmallScreen) ? 1 : 0,
+                  y: (portfolioInView || isSmallScreen) ? 0 : 4
                 }}
                 transition={{ 
                   duration: 1.2, 
@@ -271,7 +276,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
                     {project.tags.map((tag, tagIndex) => (
                       <span 
                         key={tagIndex}
-                        className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-none transition-colors duration-300 hover:bg-gray-200"
+                        className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded transition-colors duration-300 hover:bg-gray-200"
                       >
                         {tag}
                       </span>
@@ -293,7 +298,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
           <motion.div 
             className="max-w-5xl mx-auto"
             initial={{ opacity: 0 }}
-            animate={{ opacity: testimonialsInView ? 1 : 0 }}
+            animate={{ opacity: (testimonialsInView || isSmallScreen) ? 1 : 0 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="text-center">

@@ -1,29 +1,31 @@
-import React, { useState } from 'react';
-import { ChevronDown, Mail, Phone, MapPin, Download, ExternalLink, Play, Users, Building, Zap, Settings } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 import { 
   PageHeader, 
   HeroSection,
   ActivationsSection, 
-  FeatureSection, 
-  ContentGrid, 
   StatsSection, 
   TestimonialsSection, 
-  ContactForm, 
+  FAQSection,
   PlayReelSection,
-  BiohackingSection,
   ServicesSection,
   WorkPage as NewWorkPage,
   AboutPage as NewAboutPage,
-  NewsPage as NewNewsPage,
   ContactPage as NewContactPage,
   BlogPage as NewBlogPage,
   BlogArticlePage as NewBlogArticlePage,
   ProjectDetailPage,
-  XRStudiosPage
+  FilmTVProductionPage,
+  SpecialtyFabricationPage,
+  InteriorDesignPage,
+  StartProjectModal
 } from './components';
+import { XRStudiosPage } from './components/XRStudiosPage';
+import { ExhibitionDesignPage } from './components/ExhibitionDesignPage';
 import { projectDetails } from './data/projectDetails';
 
-const Navigation = ({ currentPage, setCurrentPage }: { currentPage: string; setCurrentPage: (page: string) => void }) => {
+const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { currentPage: string; setCurrentPage: (page: string) => void; onOpenStartProject: () => void }) => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
@@ -34,7 +36,11 @@ const Navigation = ({ currentPage, setCurrentPage }: { currentPage: string; setC
   ];
 
   const serviceItems = [
-    { id: 'xr-studios', label: 'XR Studios', description: 'Extended Reality studios and corporate environments' }
+    { id: 'xr-studios', label: 'XR Studios', description: 'Extended Reality studios and corporate environments' },
+    { id: 'exhibition-design', label: 'Exhibition Design', description: 'Experiential booths and pavilions, concept to turnkey' },
+    { id: 'film-tv-production', label: 'Film & TV Production', description: 'Production sets and specialty fabrication for film and TV' },
+    { id: 'specialty-fabrication', label: 'Specialty Fabrication', description: 'Precision builds, advanced materials, and on-site delivery' },
+    { id: 'interior-design', label: 'Interior Design', description: 'Bespoke interiors for offices, studios, and commercial spaces' }
   ];
 
   const handleMobileMenuToggle = () => {
@@ -122,13 +128,6 @@ const Navigation = ({ currentPage, setCurrentPage }: { currentPage: string; setC
               )}
             </div>
             
-            {/* Search Icon */}
-            <button className="text-gray-600 hover:text-[#F15F22] transition-colors p-1">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-            
             {/* Blog */}
             <button 
               onClick={() => setCurrentPage('blog')}
@@ -139,6 +138,21 @@ const Navigation = ({ currentPage, setCurrentPage }: { currentPage: string; setC
               }`}
             >
               Blog
+            </button>
+
+            {/* Start Your Project CTA */}
+            <button
+              onClick={onOpenStartProject}
+              className="ml-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-normal hover:bg-gray-200 transition-colors flex items-center space-x-2 group"
+            >
+              <span>Start Your Project</span>
+              <motion.span 
+                className="transition-colors duration-200 group-hover:text-[#F15F22]"
+                animate={{ x: [0, 3, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                →
+              </motion.span>
             </button>
           </div>
           
@@ -222,16 +236,17 @@ const Navigation = ({ currentPage, setCurrentPage }: { currentPage: string; setC
   );
 };
 
-const HomePage = () => (
+const HomePage = ({ onNavigate, onStartProject }: { onNavigate?: (page: string) => void; onStartProject?: () => void }) => (
   <div className="space-y-0">
     {/* Hero Section */}
     <HeroSection
       title={<>The Cutting<br />Edge of Visual<br />Experiences</>}
       description="We are a multidisciplinary, innovative design company delivering holistic turnkey solutions across exhibitions, XR studios, interiors, and specialty fabrications."
       buttons={[
-        { text: "Start Your Project", onClick: () => console.log("Start Project") },
+        { text: "Start Your Project", onClick: () => onStartProject && onStartProject() },
         { text: "View Our Work", onClick: () => console.log("View Work"), variant: "secondary" }
       ]}
+      imageClassName="w-full h-auto object-contain pr-8 sm:pr-12 md:pr-0"
     />
 
     {/* Flagship Projects Section */}
@@ -244,7 +259,7 @@ const HomePage = () => (
     <ActivationsSection />
 
     {/* Services Section */}
-    <ServicesSection />
+    <ServicesSection onNavigate={onNavigate} />
 
     {/* Process Section */}
     <section className="py-24 bg-white">
@@ -305,10 +320,11 @@ const HomePage = () => (
           </div>
           
           {/* Right Column - Single Full Height Image */}
-          <div className="h-full min-h-[600px] bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-none relative overflow-hidden">
-            <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-            <div className="absolute inset-0 bg-cover bg-center" 
-                 style={{backgroundImage: "url('data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 600\"%3E%3Cdefs%3E%3ClinearGradient id=\"a\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"%3E%3Cstop offset=\"0\" stop-color=\"%23667eea\"/%3E%3Cstop offset=\"1\" stop-color=\"%23764ba2\"/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=\"400\" height=\"600\" fill=\"url(%23a)\"/%3E%3C/svg%3E')"}}></div>
+          <div className="relative overflow-hidden bg-transparent aspect-square lg:aspect-auto lg:h-full lg:min-h-[600px] rounded-none">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: "url('/assets/images/08a8ef1f-39a3-42b4-959d-de2cc4278abf.png')" }}
+            ></div>
           </div>
         </div>
       </div>
@@ -353,6 +369,36 @@ const HomePage = () => (
           authorTitle: "Creative Lead",
           company: "Welspun",
           companyLogo: "Welspun"
+        }
+      ]}
+    />
+
+    {/* FAQ Section */}
+    <FAQSection
+      breadcrumb="FAQ"
+      title="Frequently asked questions"
+      subtitle="Quick answers about our process, timelines and engagement model"
+      backgroundColor="bg-white"
+      items={[
+        {
+          question: 'How do we get started on a project?',
+          answer: 'Reach out via the contact form with a brief. We schedule a discovery call to align on objectives, scope, timelines and budget, then share a proposal with phased deliverables.'
+        },
+        {
+          question: 'What is a typical project timeline?',
+          answer: 'Small engagements can be 2–4 weeks. Larger turnkey programs (exhibitions, studios, interiors) typically run 8–16 weeks depending on approvals, procurement and site conditions.'
+        },
+        {
+          question: 'Do you handle turnkey execution?',
+          answer: 'Yes. We offer concept, design, detailing, fabrication, procurement, logistics and on‑site installation with single‑point ownership.'
+        },
+        {
+          question: 'Can you work with our in‑house or partner vendors?',
+          answer: 'Absolutely. We can collaborate with your internal teams and approved vendors, or supply a complete turnkey team as needed.'
+        },
+        {
+          question: 'Where do you operate?',
+          answer: 'We are Mumbai‑based and deliver projects across India. For multi‑city programs we plan modularity, packing and repeatable detailing.'
         }
       ]}
     />
@@ -575,8 +621,11 @@ const ServicesPage = ({ setCurrentPage }: { setCurrentPage?: (page: string) => v
             </div>
           </div>
           
-          <div className="h-full min-h-[600px] bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-none relative overflow-hidden">
-            <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+          <div className="h-full min-h-[600px] rounded-none relative overflow-hidden bg-transparent">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: "url('/assets/images/08a8ef1f-39a3-42b4-959d-de2cc4278abf.png')" }}
+            ></div>
           </div>
         </div>
       </div>
@@ -848,6 +897,12 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [currentArticle, setCurrentArticle] = useState<string | null>(null);
   const [currentProject, setCurrentProject] = useState<string | null>(null);
+  const [isStartModalOpen, setIsStartModalOpen] = useState(false);
+
+  // Ensure we always start at the top on any navigation-like change
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [currentPage, currentArticle, currentProject]);
 
   const handleBlogArticleClick = (slug: string) => {
     setCurrentArticle(slug);
@@ -869,12 +924,25 @@ function App() {
     setCurrentPage('portfolio');
   };
 
+  // Footer links should mirror the navbar pages and services
+  const footerServiceItems = [
+    { id: 'xr-studios', label: 'XR Studios' },
+    { id: 'exhibition-design', label: 'Exhibition Design' },
+    { id: 'film-tv-production', label: 'Film & TV Production' },
+    { id: 'specialty-fabrication', label: 'Specialty Fabrication' },
+    { id: 'interior-design', label: 'Interior Design' }
+  ];
+
   const renderPage = () => {
     switch (currentPage) {
-      case 'home': return <HomePage />;
+      case 'home': return <HomePage onNavigate={setCurrentPage} onStartProject={() => setIsStartModalOpen(true)} />;
       case 'about': return <NewAboutPage />;
       case 'services': return <ServicesPage setCurrentPage={setCurrentPage} />;
-      case 'xr-studios': return <XRStudiosPage />;
+      case 'xr-studios': return <XRStudiosPage onStartProject={() => setIsStartModalOpen(true)} />;
+      case 'exhibition-design': return <ExhibitionDesignPage onStartProject={() => setIsStartModalOpen(true)} />;
+      case 'film-tv-production': return <FilmTVProductionPage />;
+      case 'specialty-fabrication': return <SpecialtyFabricationPage />;
+      case 'interior-design': return <InteriorDesignPage />;
       case 'portfolio': return <NewWorkPage onProjectClick={handleProjectClick} />;
       case 'project-detail': 
         return currentProject && projectDetails[currentProject] ? (
@@ -895,48 +963,53 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} onOpenStartProject={() => setIsStartModalOpen(true)} />
       <main>
         {renderPage()}
       </main>
-      <footer className="bg-black text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-12">
+      <StartProjectModal isOpen={isStartModalOpen} onClose={() => setIsStartModalOpen(false)} />
+      <footer className="bg-[#f3f4f6] text-gray-600 py-12 lg:py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-12">
             <div>
               <div className="flex items-center mb-6">
-                <div className="w-8 h-8 bg-white rounded-none flex items-center justify-center mr-3">
-                  <div className="w-4 h-4 bg-black rounded-none"></div>
-                </div>
-                <h3 className="text-xl font-semibold">Design Intervention</h3>
+                <button 
+                  onClick={() => setCurrentPage('home')}
+                  className="flex items-center space-x-3 text-xl font-normal text-black hover:opacity-70 transition-opacity"
+                >
+                  <img 
+                    src="/assets/logos/DI_LOGO (1).svg" 
+                    alt="Design Intervention Logo" 
+                    className="w-8 h-8"
+                  />
+                </button>
               </div>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="leading-relaxed">
                 Where immersive design meets cutting-edge technology
               </p>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-6">Services</h3>
               <div className="space-y-3">
-                {['XR Studios', 'Exhibition Design', 'Film Production', 'Specialty Fabrication'].map((service, index) => (
-                  <p key={index} className="text-gray-400 hover:text-white cursor-pointer transition-colors">{service}</p>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Company</h3>
-              <div className="space-y-3">
-                {['About Us', 'Portfolio', 'Clients', 'Technology'].map((item, index) => (
-                  <p key={index} className="text-gray-400 hover:text-white cursor-pointer transition-colors">{item}</p>
+                {footerServiceItems.map((service) => (
+                  <button
+                    key={service.id}
+                    onClick={() => setCurrentPage(service.id)}
+                    className="hover:opacity-90 cursor-pointer transition-opacity block text-left"
+                  >
+                    {service.label}
+                  </button>
                 ))}
               </div>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-6">Contact</h3>
-              <p className="text-gray-400 mb-2">Mumbai</p>
-              <p className="text-gray-400">projects@designintervention.biz</p>
+              <p className="mb-2">Mumbai</p>
+              <p>projects@designintervention.biz</p>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-16 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Design Intervention India Pvt. Ltd. All rights reserved.</p>
+          <div className="border-t border-gray-300 mt-16 pt-8 text-center">
+            <p className="text-gray-600">&copy; 2025 Design Intervention India Pvt. Ltd. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
+import { ArrowLeft } from 'lucide-react';
 
 interface BlogArticleProps {
   className?: string;
@@ -418,6 +419,32 @@ Our work with Pidilite Industries demonstrates how product innovation can be tra
 
   return (
     <div className={`${className}`}>
+      {/* Sub Navigation - aligned with ProjectDetailPage */}
+      <motion.div 
+        className="fixed top-16 left-0 right-0 z-40 bg-white/90 backdrop-blur-sm border-b border-gray-200"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <button
+              onClick={onBackClick}
+              className="flex items-center space-x-2 text-gray-600 hover:text-black transition-colors"
+            >
+              <ArrowLeft size={20} />
+              <span>Back to Blog</span>
+            </button>
+            <div className="flex items-center space-x-4">
+              <span className="text-sm text-gray-500">{currentArticle.category}</span>
+              <span className="text-sm text-gray-300">•</span>
+              <span className="text-sm text-gray-500">{formatDate(currentArticle.date)}</span>
+              <span className="text-sm text-gray-300">•</span>
+              <span className="text-sm text-gray-500">{currentArticle.readTime}</span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
       {/* Hero Section */}
       <motion.section 
         ref={heroRef}
@@ -426,30 +453,7 @@ Our work with Pidilite Industries demonstrates how product innovation can be tra
         animate={{ opacity: heroInView ? 1 : 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        {/* Back Navigation */}
-        <div className="absolute top-20 left-0 right-0 z-10">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <motion.button
-              onClick={onBackClick}
-              className="flex items-center space-x-2 text-white hover:text-orange-300 transition-colors bg-black/20 backdrop-blur px-4 py-2 rounded-lg"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ 
-                opacity: heroInView ? 1 : 0,
-                x: heroInView ? 0 : -20
-              }}
-              transition={{ 
-                duration: 0.5, 
-                delay: 0.1,
-                ease: "easeOut" 
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>←</span>
-              <span>Back to Blog</span>
-            </motion.button>
-          </div>
-        </div>
+        {/* Back Navigation replaced by fixed sub-nav above */}
 
         {/* Hero Image */}
         <div 
@@ -641,7 +645,7 @@ Our work with Pidilite Industries demonstrates how product innovation can be tra
           >
             <h4 className="text-lg font-semibold text-gray-900 mb-4">Share this article</h4>
             <div className="flex space-x-4">
-              {['LinkedIn', 'Twitter', 'Facebook', 'Email'].map((platform, index) => (
+              {['LinkedIn', 'Twitter', 'Facebook', 'Email'].map((platform) => (
                 <button
                   key={platform}
                   className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm"
