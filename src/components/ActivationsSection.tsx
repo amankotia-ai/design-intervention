@@ -1,21 +1,28 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 
+interface ActivationItem {
+  title: string;
+  src: string;
+}
+
 interface ActivationsSectionProps {
   className?: string;
   label?: string;
   paragraph?: string;
+  items?: ActivationItem[];
 }
 
 export const ActivationsSection: React.FC<ActivationsSectionProps> = ({
   className = '',
   label = '(Activations)',
-  paragraph = 'Exhibitions, Studios, Interactive Installations, Live shows.'
+  paragraph = 'Exhibitions, Studios, Interactive Installations, Live shows.',
+  items
 }) => {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   // Images to render in the 3x3 grid from public/assets/images/activations
-  const gridItems = [
+  const gridItems: ActivationItem[] = items ?? [
     { title: 'Activation 1', src: '/assets/images/activations/Frame 633711.png' },
     { title: 'Activation 2', src: '/assets/images/activations/Frame 633712.png' },
     { title: 'Activation 3', src: '/assets/images/activations/Frame 633712-1.png' },

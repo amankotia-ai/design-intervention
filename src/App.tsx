@@ -6,7 +6,6 @@ import {
   HeroSection,
   ActivationsSection, 
   StatsSection, 
-  TestimonialsSection, 
   FAQSection,
   PlayReelSection,
   ServicesSection,
@@ -64,11 +63,11 @@ const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { curre
               className="flex items-center space-x-3 text-xl font-normal text-black hover:opacity-70 transition-opacity"
             >
               <img 
-                src="/assets/logos/DI_LOGO (1).svg" 
+                src="/assets/images/di_logo_new.png" 
                 alt="Design Intervention Logo" 
-                className="w-8 h-8"
+                className="w-[2.4rem] h-[2.4rem]"
               />
-              <span>Design Intervention Pvt. Ltd.</span>
+              <span className="font-medium">Design Intervention Pvt. Ltd.</span>
             </button>
           </div>
           
@@ -323,55 +322,12 @@ const HomePage = ({ onNavigate, onStartProject }: { onNavigate?: (page: string) 
           <div className="relative overflow-hidden bg-transparent aspect-square lg:aspect-auto lg:h-full lg:min-h-[600px] rounded-none">
             <div
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url('/assets/images/08a8ef1f-39a3-42b4-959d-de2cc4278abf.png')" }}
+              style={{ backgroundImage: "url('/assets/images/xr_design.png')" }}
             ></div>
           </div>
         </div>
       </div>
     </section>
-
-    {/* Testimonials Section */}
-    <TestimonialsSection
-      breadcrumb="Testimonials"
-      title="Hear from our customers"
-      testimonials={[
-        {
-          quote: "We're shaping the future of experience. By putting feelings first, we redefine how people connect with brands, each other, and the world around them.",
-          authorName: "John Doe",
-          authorTitle: "Project Director",
-          company: "Adani",
-          companyLogo: "adani"
-        },
-        {
-          quote: "We're shaping the future of experience. By putting feelings first, we redefine how people connect with brands and the world around them.",
-          authorName: "Jane Smith",
-          authorTitle: "Creative Head",
-          company: "VH1",
-          companyLogo: "VH1"
-        },
-        {
-          quote: "Design Intervention transformed our brand presence with innovative solutions that exceeded our expectations and delivered remarkable results.",
-          authorName: "Rajesh Kumar",
-          authorTitle: "Marketing Director",
-          company: "CNBC TV18",
-          companyLogo: "CNBC"
-        },
-        {
-          quote: "Their attention to detail and creative vision helped us create immersive experiences that truly connect with our audience.",
-          authorName: "Priya Sharma",
-          authorTitle: "Brand Manager",
-          company: "Pidilite",
-          companyLogo: "Pidilite"
-        },
-        {
-          quote: "Outstanding work quality and professional approach. They brought our vision to life in ways we never imagined possible.",
-          authorName: "Michael Johnson",
-          authorTitle: "Creative Lead",
-          company: "Welspun",
-          companyLogo: "Welspun"
-        }
-      ]}
-    />
 
     {/* FAQ Section */}
     <FAQSection
@@ -624,7 +580,7 @@ const ServicesPage = ({ setCurrentPage }: { setCurrentPage?: (page: string) => v
           <div className="h-full min-h-[600px] rounded-none relative overflow-hidden bg-transparent">
             <div
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url('/assets/images/08a8ef1f-39a3-42b4-959d-de2cc4278abf.png')" }}
+              style={{ backgroundImage: "url('/assets/images/xr_design.png')" }}
             ></div>
           </div>
         </div>
@@ -978,9 +934,9 @@ function App() {
                   className="flex items-center space-x-3 text-xl font-normal text-black hover:opacity-70 transition-opacity"
                 >
                   <img 
-                    src="/assets/logos/DI_LOGO (1).svg" 
+                    src="/assets/images/di_logo_new_black.png" 
                     alt="Design Intervention Logo" 
-                    className="w-8 h-8"
+                    className="w-24 h-24"
                   />
                 </button>
               </div>

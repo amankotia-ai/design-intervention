@@ -27,6 +27,30 @@ html, body {
   }
 }
 
+/* Increase paragraph font-size by 2px across the project */
+p {
+  font-size: calc(1rem + 2px);
+}
+
+/* Also bump paragraphs that use Tailwind text-* utilities (supports responsive variants e.g., md:text-lg) */
+p[class*="text-xs"] { font-size: calc(0.75rem + 2px); }
+p[class*="text-sm"] { font-size: calc(0.875rem + 2px); }
+p[class*="text-base"] { font-size: calc(1rem + 2px); }
+p[class*="text-lg"] { font-size: calc(1.125rem + 2px); }
+p[class*="text-xl"] { font-size: calc(1.25rem + 2px); }
+p[class*="text-2xl"] { font-size: calc(1.5rem + 2px); }
+/* Larger sizes for completeness */
+p[class*="text-3xl"] { font-size: calc(1.875rem + 2px); }
+p[class*="text-4xl"] { font-size: calc(2.25rem + 2px); }
+p[class*="text-5xl"] { font-size: calc(3rem + 2px); }
+p[class*="text-6xl"] { font-size: calc(3.75rem + 2px); }
+p[class*="text-7xl"] { font-size: calc(4.5rem + 2px); }
+p[class*="text-8xl"] { font-size: calc(6rem + 2px); }
+p[class*="text-9xl"] { font-size: calc(8rem + 2px); }
+
+/* If Tailwind Typography is enabled later, ensure prose paragraphs also get +2px */
+.prose p { font-size: calc(1em + 2px); }
+
 /* Testimonials scroll animation - for 3 sets, move by 33.333% */
 @keyframes testimonials-scroll {
   0% {

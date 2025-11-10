@@ -26,6 +26,14 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
         className="mt-24"
         label="(XR Highlights)"
         paragraph="XR studios for newsrooms, corporate comms, and content creators — spatial design, LED stages, Unreal/Disguise pipelines, and training."
+        items={[
+          { title: 'XR Studio 1', src: '/assets/images/XR Studios/Screenshot 2025-09-03 at 4.15.46 PM.png' },
+          { title: 'XR Studio 2', src: '/assets/images/XR Studios/Screenshot 2025-09-03 at 4.15.55 PM.png' },
+          { title: 'XR Studio 3', src: '/assets/images/XR Studios/Screenshot 2025-09-03 at 4.16.03 PM.png' },
+          { title: 'XR Studio 4', src: '/assets/images/XR Studios/Screenshot 2025-09-03 at 4.16.13 PM.png' },
+          { title: 'XR Studio 5', src: '/assets/images/XR Studios/Screenshot 2025-09-03 at 4.16.21 PM.png' },
+          { title: 'XR Studio 6', src: '/assets/images/XR Studios/Screenshot 2025-09-03 at 4.16.28 PM.png' }
+        ]}
       />
 
       {/* Capabilities Section */}
@@ -164,7 +172,7 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
             <div className="relative overflow-hidden bg-transparent aspect-square lg:aspect-auto lg:h-full lg:min-h-[600px] rounded-none">
               <div
                 className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('/assets/images/5896c42d-4610-43a7-8bcc-043184751e98.png')" }}
+                style={{ backgroundImage: "url('/assets/images/xr_design.png')" }}
               ></div>
             </div>
           </div>

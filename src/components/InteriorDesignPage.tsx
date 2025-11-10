@@ -26,6 +26,17 @@ export const InteriorDesignPage: React.FC<InteriorDesignPageProps> = ({ onStartP
         className="mt-24"
         label="(Interior Highlights)"
         paragraph="Workplace strategy, collaborative zones, material palettes, acoustic control, and lighting integration — designed for performance and brand expression."
+        items={[
+          { title: 'Realty 1', src: '/assets/images/Realty/Screenshot 2025-09-03 at 4.10.37 PM.png' },
+          { title: 'Realty 2', src: '/assets/images/Realty/Screenshot 2025-09-03 at 4.10.46 PM.png' },
+          { title: 'Realty 3', src: '/assets/images/Realty/Screenshot 2025-09-03 at 4.10.53 PM.png' },
+          { title: 'Realty 4', src: '/assets/images/Realty/Screenshot 2025-09-03 at 4.11.07 PM.png' },
+          { title: 'Realty 5', src: '/assets/images/Realty/Screenshot 2025-09-03 at 4.11.23 PM.png' },
+          { title: 'Realty 6', src: '/assets/images/Realty/Screenshot 2025-09-03 at 4.11.33 PM.png' },
+          { title: 'Realty 7', src: '/assets/images/Realty/Screenshot 2025-09-03 at 4.11.45 PM.png' },
+          { title: 'Realty 8', src: '/assets/images/Realty/Screenshot 2025-09-03 at 4.11.50 PM.png' },
+          { title: 'Realty 9', src: '/assets/images/Realty/Screenshot 2025-09-03 at 4.12.45 PM.png' }
+        ]}
       />
 
       {/* Capabilities Section */}

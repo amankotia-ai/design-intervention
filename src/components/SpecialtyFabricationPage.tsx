@@ -26,6 +26,14 @@ export const SpecialtyFabricationPage: React.FC<SpecialtyFabricationPageProps> =
         className="mt-24"
         label="(Fabrication Highlights)"
         paragraph="Bespoke builds for exhibitions, studios, retail, and sets — technical detailing, prototyping, production, and on‑site installation under one roof."
+        items={[
+          { title: 'Specialty 1', src: '/assets/images/Specialty/Screenshot 2025-09-03 at 4.20.33 PM.png' },
+          { title: 'Specialty 2', src: '/assets/images/Specialty/Screenshot 2025-09-03 at 4.20.41 PM.png' },
+          { title: 'Specialty 3', src: '/assets/images/Specialty/Screenshot 2025-09-03 at 4.20.51 PM.png' },
+          { title: 'Specialty 4', src: '/assets/images/Specialty/Screenshot 2025-09-03 at 4.20.59 PM.png' },
+          { title: 'Specialty 5', src: '/assets/images/Specialty/Screenshot 2025-09-03 at 4.21.20 PM.png' },
+          { title: 'Specialty 6', src: '/assets/images/Specialty/Screenshot 2025-09-03 at 4.21.27 PM.png' }
+        ]}
       />
 
       {/* Capabilities Section */}

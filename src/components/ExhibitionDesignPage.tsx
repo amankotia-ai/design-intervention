@@ -28,6 +28,17 @@ export const ExhibitionDesignPage: React.FC<ExhibitionDesignPageProps> = ({ onSt
         className="mt-24"
         label="(Exhibition Highlights)"
         paragraph="Experiential booths, pavilions and brand worlds—strategy, design and turnkey build for trade shows and expos."
+        items={[
+          { title: 'Exhibition 1', src: '/assets/images/Exhibitions/Screenshot 2025-09-03 at 4.02.29 PM.png' },
+          { title: 'Exhibition 2', src: '/assets/images/Exhibitions/Screenshot 2025-09-03 at 4.02.41 PM.png' },
+          { title: 'Exhibition 3', src: '/assets/images/Exhibitions/Screenshot 2025-09-03 at 4.02.51 PM.png' },
+          { title: 'Exhibition 4', src: '/assets/images/Exhibitions/Screenshot 2025-09-03 at 4.03.03 PM.png' },
+          { title: 'Exhibition 5', src: '/assets/images/Exhibitions/Screenshot 2025-09-03 at 4.03.12 PM.png' },
+          { title: 'Exhibition 6', src: '/assets/images/Exhibitions/Screenshot 2025-09-03 at 4.03.31 PM.png' },
+          { title: 'Exhibition 7', src: '/assets/images/Exhibitions/Screenshot 2025-09-03 at 4.03.39 PM.png' },
+          { title: 'Exhibition 8', src: '/assets/images/Exhibitions/Screenshot 2025-09-03 at 4.03.49 PM.png' },
+          { title: 'Exhibition 9', src: '/assets/images/Exhibitions/Screenshot 2025-09-03 at 4.03.58 PM.png' }
+        ]}
       />
 
       {/* Capabilities Section */}
