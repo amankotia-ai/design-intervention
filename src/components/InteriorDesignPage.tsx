@@ -24,7 +24,7 @@ export const InteriorDesignPage: React.FC<InteriorDesignPageProps> = ({ onStartP
 
       <ActivationsSection 
         className="mt-24"
-        label="(Interior Highlights)"
+        label="Interior Highlights"
         paragraph="Workplace strategy, collaborative zones, material palettes, acoustic control, and lighting integration — designed for performance and brand expression."
         items={[
           { title: 'Realty 1', src: '/assets/images/Realty/Screenshot 2025-09-03 at 4.10.37 PM.png' },
@@ -46,7 +46,7 @@ export const InteriorDesignPage: React.FC<InteriorDesignPageProps> = ({ onStartP
           <div className="grid lg:grid-cols-2 gap-20 mb-20 items-start">
             {/* Left Column - Header */}
             <div className="flex items-center text-lg font-normal" style={{ color: '#F15F22' }}>
-              <span>(Interior Capabilities)</span>
+              <span>Interior Capabilities</span>
             </div>
 
             {/* Right Column - Large Text */}
@@ -122,7 +122,7 @@ export const InteriorDesignPage: React.FC<InteriorDesignPageProps> = ({ onStartP
             <div>
               {/* Header */}
               <div className="flex items-center text-lg mb-8" style={{ color: '#F15F22' }}>
-                <span>(Process)</span>
+                <span>Process</span>
               </div>
 
               <h2 className="text-4xl lg:text-5xl font-normal text-gray-900 mb-8 leading-tight">

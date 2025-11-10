@@ -120,7 +120,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
             animate={{ opacity: (heroInView || isSmallScreen) ? 1 : 0 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span>(Our Work)</span>
+            <span>Our Work</span>
           </motion.div>
 
           <motion.h1 
@@ -161,7 +161,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ className = '', onProjectCli
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(Featured Projects)</span>
+                <span>Featured Projects</span>
               </div>
             </motion.div>
 

@@ -68,7 +68,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             }}
           >
             <div className="flex items-center text-base sm:text-lg" style={{ color: '#F15F22' }}>
-              <span>(What We Do)</span>
+              <span>What We Do</span>
             </div>
           </motion.div>
 

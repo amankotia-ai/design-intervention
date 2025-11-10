@@ -484,7 +484,7 @@ Our work with Pidilite Industries demonstrates how product innovation can be tra
                   ease: "easeOut" 
                 }}
               >
-                <span>({currentArticle.category})</span>
+                <span>{currentArticle.category}</span>
               </motion.div>
 
               <motion.h1 
@@ -678,7 +678,7 @@ Our work with Pidilite Industries demonstrates how product innovation can be tra
             }}
           >
             <div className="flex items-center justify-center text-lg mb-6" style={{ color: '#F15F22' }}>
-              <span>(Related Reading)</span>
+              <span>Related Reading</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-normal text-black leading-tight">
               Continue Exploring

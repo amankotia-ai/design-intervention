@@ -145,7 +145,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ className = '' }) => {
               ease: "easeOut" 
             }}
           >
-            <span>(News & Insights)</span>
+            <span>News & Insights</span>
           </motion.div>
 
           <motion.h1 
@@ -204,7 +204,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ className = '' }) => {
               }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(Featured Stories)</span>
+                <span>Featured Stories</span>
               </div>
             </motion.div>
 
@@ -325,7 +325,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ className = '' }) => {
               }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(All Articles)</span>
+                <span>All Articles</span>
               </div>
             </motion.div>
 

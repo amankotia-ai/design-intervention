@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowLeft, Calendar, Users, MapPin, Award, Camera } from 'lucide-react';
+import { ArrowLeft, Calendar, Users, MapPin, Camera } from 'lucide-react';
 
 interface ProjectImage {
   url: string;
@@ -65,13 +65,9 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
   
   const heroRef = React.useRef(null);
   const galleryRef = React.useRef(null);
-  const detailsRef = React.useRef(null);
-  const specsRef = React.useRef(null);
   
   const heroInView = useInView(heroRef, { once: true, amount: 0.3 });
   const galleryInView = useInView(galleryRef, { once: true, amount: 0.2 });
-  const detailsInView = useInView(detailsRef, { once: true, amount: 0.2 });
-  const specsInView = useInView(specsRef, { once: true, amount: 0.2 });
 
   const mainImage = project.images.find(img => img.type === 'main') || project.images[0];
   const galleryImages = project.images.filter(img => img.type === 'gallery');
@@ -128,7 +124,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div className="flex items-center text-lg mb-6" style={{ color: '#F15F22' }}>
-                <span>({project.category})</span>
+                <span>{project.category}</span>
               </div>
               
               <h1 className="text-5xl lg:text-6xl font-normal text-black mb-6 leading-tight">
@@ -215,176 +211,6 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
           </div>
         </div>
       </motion.section>
-
-      {/* Project Overview */}
-      <motion.section 
-        ref={detailsRef}
-        className="py-20 bg-gray-50"
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-16">
-            {/* Main Content */}
-            <motion.div 
-              className="lg:col-span-2"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ 
-                opacity: detailsInView ? 1 : 0,
-                y: detailsInView ? 0 : 30
-              }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-3xl font-normal text-black mb-6">Project Overview</h2>
-              <div className="prose prose-lg max-w-none text-gray-600">
-                <p className="text-lg leading-relaxed mb-6">{project.longDescription}</p>
-                
-                {project.challenges.length > 0 && (
-                  <div className="mb-8">
-                    <h3 className="text-xl font-medium text-black mb-4">Challenges</h3>
-                    <ul className="space-y-2">
-                      {project.challenges.map((challenge, index) => (
-                        <li key={index} className="flex items-start space-x-3">
-                          <div className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0" />
-                          <span>{challenge}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {project.solutions.length > 0 && (
-                  <div className="mb-8">
-                    <h3 className="text-xl font-medium text-black mb-4">Solutions</h3>
-                    <ul className="space-y-2">
-                      {project.solutions.map((solution, index) => (
-                        <li key={index} className="flex items-start space-x-3">
-                          <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0" />
-                          <span>{solution}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {project.results.length > 0 && (
-                  <div>
-                    <h3 className="text-xl font-medium text-black mb-4">Results</h3>
-                    <ul className="space-y-2">
-                      {project.results.map((result, index) => (
-                        <li key={index} className="flex items-start space-x-3">
-                          <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
-                          <span>{result}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-
-            {/* Sidebar Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ 
-                opacity: detailsInView ? 1 : 0,
-                y: detailsInView ? 0 : 30
-              }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <div className="bg-white p-6 rounded-none shadow-sm">
-                <h3 className="text-xl font-medium text-black mb-6">Project Details</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">Status</p>
-                    <span className={`inline-block px-3 py-1 rounded-full text-sm ${
-                      project.status === 'completed' ? 'bg-green-100 text-green-700' :
-                      project.status === 'in-progress' ? 'bg-yellow-100 text-yellow-700' :
-                      'bg-gray-100 text-gray-700'
-                    }`}>
-                      {project.status.charAt(0).toUpperCase() + project.status.slice(1).replace('-', ' ')}
-                    </span>
-                  </div>
-                  
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">Team Size</p>
-                    <p className="font-medium text-gray-900">{project.teamSize}</p>
-                  </div>
-
-                  {project.budget && (
-                    <div>
-                      <p className="text-sm text-gray-500 mb-1">Budget</p>
-                      <p className="font-medium text-gray-900">{project.budget}</p>
-                    </div>
-                  )}
-
-                  {project.technologies.length > 0 && (
-                    <div>
-                      <p className="text-sm text-gray-500 mb-2">Technologies</p>
-                      <div className="flex flex-wrap gap-1">
-                        {project.technologies.map((tech, index) => (
-                          <span 
-                            key={index}
-                            className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {project.awards && project.awards.length > 0 && (
-                    <div>
-                      <p className="text-sm text-gray-500 mb-2">Awards</p>
-                      <div className="space-y-2">
-                      {project.awards.map((award, index) => (
-                        <div key={index} className="flex items-start space-x-2">
-                          <Award size={16} className="text-yellow-500 mt-1 flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{award}</span>
-                        </div>
-                      ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Team section removed as requested */}
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Specifications */}
-      {project.specs.length > 0 && (
-        <motion.section 
-          ref={specsRef}
-          className="py-20 bg-white"
-        >
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ 
-                opacity: specsInView ? 1 : 0,
-                y: specsInView ? 0 : 30
-              }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-3xl font-normal text-black mb-12">Technical Specifications</h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                {project.specs.map((spec, index) => (
-                  <div key={index} className="border-b border-gray-200 pb-4">
-                    <div className="flex justify-between items-start">
-                      <p className="text-gray-600">{spec.label}</p>
-                      <p className="font-medium text-black text-right ml-4">{spec.value}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </motion.section>
-      )}
 
       {/* Gallery */}
       {galleryImages.length > 0 && (

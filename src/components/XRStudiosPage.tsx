@@ -24,7 +24,7 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
 
       <ActivationsSection 
         className="mt-24"
-        label="(XR Highlights)"
+        label="XR Highlights"
         paragraph="XR studios for newsrooms, corporate comms, and content creators — spatial design, LED stages, Unreal/Disguise pipelines, and training."
         items={[
           { title: 'XR Studio 1', src: '/assets/images/XR Studios/Screenshot 2025-09-03 at 4.15.46 PM.png' },
@@ -43,7 +43,7 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
           <div className="grid lg:grid-cols-2 gap-20 mb-20 items-start">
             {/* Left Column - Header */}
             <div className="flex items-center text-lg font-normal" style={{ color: '#F15F22' }}>
-              <span>(XR Capabilities)</span>
+              <span>XR Capabilities</span>
             </div>
 
             {/* Right Column - Large Text */}
@@ -118,7 +118,7 @@ export const XRStudiosPage: React.FC<XRStudiosPageProps> = ({ onStartProject }) 
             <div>
               {/* Header */}
               <div className="flex items-center text-lg mb-8" style={{ color: '#F15F22' }}>
-                <span>(Process)</span>
+                <span>Process</span>
               </div>
 
               <h2 className="text-4xl lg:text-5xl font-normal text-gray-900 mb-8 leading-tight">

@@ -26,7 +26,7 @@ export const ExhibitionDesignPage: React.FC<ExhibitionDesignPageProps> = ({ onSt
 
       <ActivationsSection 
         className="mt-24"
-        label="(Exhibition Highlights)"
+        label="Exhibition Highlights"
         paragraph="Experiential booths, pavilions and brand worlds—strategy, design and turnkey build for trade shows and expos."
         items={[
           { title: 'Exhibition 1', src: '/assets/images/Exhibitions/Screenshot 2025-09-03 at 4.02.29 PM.png' },
@@ -48,7 +48,7 @@ export const ExhibitionDesignPage: React.FC<ExhibitionDesignPageProps> = ({ onSt
           <div className="grid lg:grid-cols-2 gap-20 mb-20 items-start">
             {/* Left Column - Header */}
             <div className="flex items-center text-lg font-normal" style={{ color: '#F15F22' }}>
-              <span>(Exhibition Capabilities)</span>
+              <span>Exhibition Capabilities</span>
             </div>
 
             {/* Right Column - Large Text */}
@@ -129,7 +129,7 @@ export const ExhibitionDesignPage: React.FC<ExhibitionDesignPageProps> = ({ onSt
             <div>
               {/* Header */}
               <div className="flex items-center text-lg mb-8" style={{ color: '#F15F22' }}>
-                <span>(Process)</span>
+                <span>Process</span>
               </div>
 
               <h2 className="text-4xl lg:text-5xl font-normal text-gray-900 mb-8 leading-tight">

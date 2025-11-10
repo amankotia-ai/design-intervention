@@ -178,7 +178,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
             animate={{ opacity: heroInView ? 1 : 0 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span>(Get In Touch)</span>
+            <span>Get In Touch</span>
           </motion.div>
 
           <motion.h1 
@@ -227,7 +227,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(Project Inquiry)</span>
+                <span>Project Inquiry</span>
               </div>
             </motion.div>
 
@@ -447,7 +447,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(Direct Contact)</span>
+                <span>Direct Contact</span>
               </div>
             </motion.div>
 
@@ -542,7 +542,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(Our Locations)</span>
+                <span>Our Locations</span>
               </div>
             </motion.div>
 
@@ -606,7 +606,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(Key Contacts)</span>
+                <span>Key Contacts</span>
               </div>
             </motion.div>
 

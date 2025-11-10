@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate, useParams, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { 
@@ -24,32 +25,38 @@ import { XRStudiosPage } from './components/XRStudiosPage';
 import { ExhibitionDesignPage } from './components/ExhibitionDesignPage';
 import { projectDetails } from './data/projectDetails';
 
-const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { currentPage: string; setCurrentPage: (page: string) => void; onOpenStartProject: () => void }) => {
+const Navigation = ({ onOpenStartProject }: { onOpenStartProject: () => void }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const navItems = [
-    { id: 'portfolio', label: 'Work' },
-    { id: 'about', label: 'About' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'work', label: 'Work', path: '/work' },
+    { id: 'about', label: 'About', path: '/about' },
+    { id: 'contact', label: 'Contact', path: '/contact' }
   ];
 
   const serviceItems = [
-    { id: 'xr-studios', label: 'XR Studios', description: 'Extended Reality studios and corporate environments' },
-    { id: 'exhibition-design', label: 'Exhibition Design', description: 'Experiential booths and pavilions, concept to turnkey' },
-    { id: 'film-tv-production', label: 'Film & TV Production', description: 'Production sets and specialty fabrication for film and TV' },
-    { id: 'specialty-fabrication', label: 'Specialty Fabrication', description: 'Precision builds, advanced materials, and on-site delivery' },
-    { id: 'interior-design', label: 'Interior Design', description: 'Bespoke interiors for offices, studios, and commercial spaces' }
+    { id: 'xr-studios', label: 'XR Studios', description: 'Extended Reality studios and corporate environments', path: '/services/xr-studios' },
+    { id: 'exhibition-design', label: 'Exhibition Design', description: 'Experiential booths and pavilions, concept to turnkey', path: '/services/exhibition-design' },
+    { id: 'film-tv-production', label: 'Film & TV Production', description: 'Production sets and specialty fabrication for film and TV', path: '/services/film-tv-production' },
+    { id: 'specialty-fabrication', label: 'Specialty Fabrication', description: 'Precision builds, advanced materials, and on-site delivery', path: '/services/specialty-fabrication' },
+    { id: 'interior-design', label: 'Interior Design', description: 'Bespoke interiors for offices, studios, and commercial spaces', path: '/services/interior-design' }
   ];
 
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleMobileNavClick = (pageId: string) => {
-    setCurrentPage(pageId);
+  const handleMobileNavClick = (path: string) => {
+    navigate(path);
     setIsMobileMenuOpen(false);
     setIsServicesOpen(false);
+  };
+
+  const isActiveRoute = (path: string) => {
+    return location.pathname === path || location.pathname.startsWith(path + '/');
   };
 
   return (
@@ -59,7 +66,7 @@ const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { curre
           {/* Logo */}
           <div className="flex-shrink-0">
             <button 
-              onClick={() => setCurrentPage('home')}
+              onClick={() => navigate('/')}
               className="flex items-center space-x-3 text-xl font-normal text-black hover:opacity-70 transition-opacity"
             >
               <img 
@@ -76,9 +83,9 @@ const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { curre
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => setCurrentPage(item.id)}
+                onClick={() => navigate(item.path)}
                 className={`text-base font-normal transition-colors ${
-                  currentPage === item.id
+                  isActiveRoute(item.path)
                     ? 'text-[#F15F22]'
                     : 'text-gray-600 hover:text-[#F15F22]'
                 }`}
@@ -93,7 +100,7 @@ const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { curre
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 onMouseEnter={() => setIsServicesOpen(true)}
                 className={`flex items-center space-x-1 text-base font-normal transition-colors ${
-                  currentPage.includes('services') || currentPage.includes('xr-') || currentPage.includes('exhibition-') || currentPage.includes('film-') || currentPage.includes('specialty-') || currentPage.includes('interior-')
+                  location.pathname.startsWith('/services')
                     ? 'text-[#F15F22]'
                     : 'text-gray-600 hover:text-[#F15F22]'
                 }`}
@@ -113,7 +120,7 @@ const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { curre
                       <button
                         key={service.id}
                         onClick={() => {
-                          setCurrentPage(service.id);
+                          navigate(service.path);
                           setIsServicesOpen(false);
                         }}
                         className="w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors"
@@ -129,9 +136,9 @@ const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { curre
             
             {/* Blog */}
             <button 
-              onClick={() => setCurrentPage('blog')}
+              onClick={() => navigate('/blog')}
               className={`text-base font-normal transition-colors ${
-                currentPage === 'blog'
+                isActiveRoute('/blog')
                   ? 'text-[#F15F22]'
                   : 'text-gray-600 hover:text-[#F15F22]'
               }`}
@@ -184,9 +191,9 @@ const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { curre
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => handleMobileNavClick(item.id)}
+                  onClick={() => handleMobileNavClick(item.path)}
                   className={`block w-full text-left py-3 text-base font-normal transition-colors ${
-                    currentPage === item.id
+                    isActiveRoute(item.path)
                       ? 'text-[#F15F22]'
                       : 'text-gray-600 hover:text-[#F15F22]'
                   }`}
@@ -201,9 +208,9 @@ const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { curre
                 {serviceItems.map((service) => (
                   <button
                     key={service.id}
-                    onClick={() => handleMobileNavClick(service.id)}
+                    onClick={() => handleMobileNavClick(service.path)}
                     className={`block w-full text-left py-3 transition-colors ${
-                      currentPage === service.id
+                      isActiveRoute(service.path)
                         ? 'text-[#F15F22]'
                         : 'text-gray-600 hover:text-[#F15F22]'
                     }`}
@@ -217,9 +224,9 @@ const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { curre
               {/* Blog */}
               <div className="border-t border-gray-200 pt-4">
                 <button
-                  onClick={() => handleMobileNavClick('blog')}
+                  onClick={() => handleMobileNavClick('/blog')}
                   className={`block w-full text-left py-3 text-base font-normal transition-colors ${
-                    currentPage === 'blog'
+                    isActiveRoute('/blog')
                       ? 'text-[#F15F22]'
                       : 'text-gray-600 hover:text-[#F15F22]'
                   }`}
@@ -235,7 +242,10 @@ const Navigation = ({ currentPage, setCurrentPage, onOpenStartProject }: { curre
   );
 };
 
-const HomePage = ({ onNavigate, onStartProject }: { onNavigate?: (page: string) => void; onStartProject?: () => void }) => (
+const HomePage = ({ onStartProject }: { onStartProject?: () => void }) => {
+  const navigate = useNavigate();
+  
+  return (
   <div className="space-y-0">
     {/* Hero Section */}
     <HeroSection
@@ -243,7 +253,7 @@ const HomePage = ({ onNavigate, onStartProject }: { onNavigate?: (page: string) 
       description="We are a multidisciplinary, innovative design company delivering holistic turnkey solutions across exhibitions, XR studios, interiors, and specialty fabrications."
       buttons={[
         { text: "Start Your Project", onClick: () => onStartProject && onStartProject() },
-        { text: "View Our Work", onClick: () => console.log("View Work"), variant: "secondary" }
+        { text: "View Our Work", onClick: () => navigate('/work'), variant: "secondary" }
       ]}
       imageClassName="w-full h-auto object-contain pr-8 sm:pr-12 md:pr-0"
     />
@@ -258,7 +268,7 @@ const HomePage = ({ onNavigate, onStartProject }: { onNavigate?: (page: string) 
     <ActivationsSection />
 
     {/* Services Section */}
-    <ServicesSection onNavigate={onNavigate} />
+    <ServicesSection onNavigate={(page) => navigate(`/services/${page}`)} />
 
     {/* Process Section */}
     <section className="py-24 bg-white">
@@ -267,8 +277,8 @@ const HomePage = ({ onNavigate, onStartProject }: { onNavigate?: (page: string) 
           {/* Left Column - Process Content */}
           <div>
             {/* Header */}
-            <div className="flex items-center text-lg mb-8" style={{ color: '#F15F22' }}>
-              <span>(Process)</span>
+          <div className="flex items-center text-lg mb-8" style={{ color: '#F15F22' }}>
+            <span>Process</span>
             </div>
             
             <h2 className="text-4xl lg:text-5xl font-normal text-gray-900 mb-8 leading-tight">
@@ -359,15 +369,19 @@ const HomePage = ({ onNavigate, onStartProject }: { onNavigate?: (page: string) 
       ]}
     />
   </div>
-);
+  );
+};
 
 
 
-const ServicesPage = ({ setCurrentPage }: { setCurrentPage?: (page: string) => void }) => (
+const ServicesPage = () => {
+  const navigate = useNavigate();
+  
+  return (
   <div className="space-y-32">
     {/* Header */}
     <PageHeader
-      breadcrumb="(Services)"
+      breadcrumb="Services"
       title="XR Experiences"
       description="Powered by Disguise"
     />
@@ -386,7 +400,7 @@ const ServicesPage = ({ setCurrentPage }: { setCurrentPage?: (page: string) => v
         <div className="grid lg:grid-cols-2 gap-20 mt-8">
           <div>
             <button 
-              onClick={() => setCurrentPage && setCurrentPage('xr-studios')}
+              onClick={() => navigate('/services/xr-studios')}
               className="text-xl font-semibold text-gray-900 mb-4 hover:text-[#F15F22] transition-colors cursor-pointer"
             >
               Interactive Studios →
@@ -394,7 +408,7 @@ const ServicesPage = ({ setCurrentPage }: { setCurrentPage?: (page: string) => v
           </div>
           <div>
             <button 
-              onClick={() => setCurrentPage && setCurrentPage('xr-studios')}
+              onClick={() => navigate('/services/xr-studios')}
               className="text-xl font-semibold text-gray-900 mb-4 hover:text-[#F15F22] transition-colors cursor-pointer"
             >
               Live Shows →
@@ -417,7 +431,7 @@ const ServicesPage = ({ setCurrentPage }: { setCurrentPage?: (page: string) => v
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-20">
           <div className="flex items-center justify-center text-lg mb-8" style={{ color: '#F15F22' }}>
-            <span>(Granular Control)</span>
+            <span>Granular Control</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
             Integrated Solutions to Unlock<br />
@@ -480,7 +494,7 @@ const ServicesPage = ({ setCurrentPage }: { setCurrentPage?: (page: string) => v
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div>
             <button 
-              onClick={() => setCurrentPage && setCurrentPage('xr-studios')}
+              onClick={() => navigate('/services/xr-studios')}
               className="block w-full text-left hover:opacity-80 transition-opacity"
             >
               <h2 className="text-4xl font-bold text-gray-900 mb-8 leading-tight hover:text-[#F15F22] transition-colors">
@@ -511,7 +525,7 @@ const ServicesPage = ({ setCurrentPage }: { setCurrentPage?: (page: string) => v
             </div>
           </div>
           <button 
-            onClick={() => setCurrentPage && setCurrentPage('xr-studios')}
+            onClick={() => navigate('/services/xr-studios')}
             className="w-full h-96 bg-gradient-to-br from-blue-500 to-purple-600 rounded-none hover:opacity-90 transition-opacity"
           ></button>
         </div>
@@ -524,7 +538,7 @@ const ServicesPage = ({ setCurrentPage }: { setCurrentPage?: (page: string) => v
         <div className="grid lg:grid-cols-2 gap-20 items-start">
           <div>
             <div className="flex items-center text-lg mb-8" style={{ color: '#F15F22' }}>
-              <span>(Process)</span>
+              <span>Process</span>
             </div>
             
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
@@ -587,7 +601,8 @@ const ServicesPage = ({ setCurrentPage }: { setCurrentPage?: (page: string) => v
       </div>
     </section>
   </div>
-);
+  );
+};
 
 
 
@@ -849,126 +864,143 @@ const TechnologyPage = () => (
 
 
 
+// Footer component
+const Footer = ({ footerServiceItems }: { footerServiceItems: Array<{ id: string; label: string; path: string }> }) => {
+  const navigate = useNavigate();
+  
+  return (
+    <footer className="bg-[#f3f4f6] text-gray-600 py-12 lg:py-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid md:grid-cols-3 gap-12">
+          <div>
+            <div className="flex items-center mb-6">
+              <button 
+                onClick={() => navigate('/')}
+                className="flex items-center space-x-3 text-xl font-normal text-black hover:opacity-70 transition-opacity"
+              >
+                <img 
+                  src="/assets/images/di_logo_new_black.png" 
+                  alt="Design Intervention Logo" 
+                  className="w-24 h-24"
+                />
+              </button>
+            </div>
+            <p className="leading-relaxed">
+              Where immersive design meets cutting-edge technology
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Services</h3>
+            <div className="space-y-3">
+              {footerServiceItems.map((service) => (
+                <button
+                  key={service.id}
+                  onClick={() => navigate(service.path)}
+                  className="hover:opacity-90 cursor-pointer transition-opacity block text-left"
+                >
+                  {service.label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Contact</h3>
+            <p className="mb-2">Mumbai</p>
+            <p>projects@designintervention.biz</p>
+          </div>
+        </div>
+        <div className="border-t border-gray-300 mt-16 pt-8 text-center">
+          <p className="text-gray-600">&copy; 2025 Design Intervention India Pvt. Ltd. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// Wrapper components for routes with params
+const ProjectDetailRoute = () => {
+  const { projectId } = useParams<{ projectId: string }>();
+  const navigate = useNavigate();
+  
+  const project = projectId ? projectDetails[projectId] : null;
+  
+  if (!project) {
+    return <NewWorkPage onProjectClick={(id) => navigate(`/work/${id}`)} />;
+  }
+  
+  return (
+    <ProjectDetailPage 
+      project={project} 
+      onBackClick={() => navigate('/work')}
+      onRelatedProjectClick={(id) => navigate(`/work/${id}`)}
+    />
+  );
+};
+
+const BlogArticleRoute = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  
+  return (
+    <NewBlogArticlePage 
+      slug={slug} 
+      onBackClick={() => navigate('/blog')} 
+    />
+  );
+};
+
+const WorkPageRoute = () => {
+  const navigate = useNavigate();
+  return <NewWorkPage onProjectClick={(id) => navigate(`/work/${id}`)} />;
+};
+
+const BlogPageRoute = () => {
+  const navigate = useNavigate();
+  return <NewBlogPage onArticleClick={(slug) => navigate(`/blog/${slug}`)} />;
+};
+
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [currentArticle, setCurrentArticle] = useState<string | null>(null);
-  const [currentProject, setCurrentProject] = useState<string | null>(null);
+  const location = useLocation();
   const [isStartModalOpen, setIsStartModalOpen] = useState(false);
 
-  // Ensure we always start at the top on any navigation-like change
+  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [currentPage, currentArticle, currentProject]);
-
-  const handleBlogArticleClick = (slug: string) => {
-    setCurrentArticle(slug);
-    setCurrentPage('blog-article');
-  };
-
-  const handleBackToBlog = () => {
-    setCurrentArticle(null);
-    setCurrentPage('blog');
-  };
-
-  const handleProjectClick = (projectId: string) => {
-    setCurrentProject(projectId);
-    setCurrentPage('project-detail');
-  };
-
-  const handleBackToWork = () => {
-    setCurrentProject(null);
-    setCurrentPage('portfolio');
-  };
+  }, [location.pathname]);
 
   // Footer links should mirror the navbar pages and services
   const footerServiceItems = [
-    { id: 'xr-studios', label: 'XR Studios' },
-    { id: 'exhibition-design', label: 'Exhibition Design' },
-    { id: 'film-tv-production', label: 'Film & TV Production' },
-    { id: 'specialty-fabrication', label: 'Specialty Fabrication' },
-    { id: 'interior-design', label: 'Interior Design' }
+    { id: 'xr-studios', label: 'XR Studios', path: '/services/xr-studios' },
+    { id: 'exhibition-design', label: 'Exhibition Design', path: '/services/exhibition-design' },
+    { id: 'film-tv-production', label: 'Film & TV Production', path: '/services/film-tv-production' },
+    { id: 'specialty-fabrication', label: 'Specialty Fabrication', path: '/services/specialty-fabrication' },
+    { id: 'interior-design', label: 'Interior Design', path: '/services/interior-design' }
   ];
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home': return <HomePage onNavigate={setCurrentPage} onStartProject={() => setIsStartModalOpen(true)} />;
-      case 'about': return <NewAboutPage />;
-      case 'services': return <ServicesPage setCurrentPage={setCurrentPage} />;
-      case 'xr-studios': return <XRStudiosPage onStartProject={() => setIsStartModalOpen(true)} />;
-      case 'exhibition-design': return <ExhibitionDesignPage onStartProject={() => setIsStartModalOpen(true)} />;
-      case 'film-tv-production': return <FilmTVProductionPage />;
-      case 'specialty-fabrication': return <SpecialtyFabricationPage />;
-      case 'interior-design': return <InteriorDesignPage />;
-      case 'portfolio': return <NewWorkPage onProjectClick={handleProjectClick} />;
-      case 'project-detail': 
-        return currentProject && projectDetails[currentProject] ? (
-          <ProjectDetailPage 
-            project={projectDetails[currentProject]} 
-            onBackClick={handleBackToWork}
-            onRelatedProjectClick={handleProjectClick}
-          />
-        ) : <NewWorkPage onProjectClick={handleProjectClick} />;
-      case 'clients': return <ClientsPage />;
-      case 'technology': return <TechnologyPage />;
-      case 'blog': return <NewBlogPage onArticleClick={handleBlogArticleClick} />;
-      case 'blog-article': return <NewBlogArticlePage slug={currentArticle || undefined} onBackClick={handleBackToBlog} />;
-      case 'contact': return <NewContactPage />;
-      default: return <HomePage />;
-    }
-  };
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} onOpenStartProject={() => setIsStartModalOpen(true)} />
+      <Navigation onOpenStartProject={() => setIsStartModalOpen(true)} />
       <main>
-        {renderPage()}
+        <Routes>
+          <Route path="/" element={<HomePage onStartProject={() => setIsStartModalOpen(true)} />} />
+          <Route path="/about" element={<NewAboutPage />} />
+          <Route path="/work" element={<WorkPageRoute />} />
+          <Route path="/work/:projectId" element={<ProjectDetailRoute />} />
+          <Route path="/contact" element={<NewContactPage />} />
+          <Route path="/blog" element={<BlogPageRoute />} />
+          <Route path="/blog/:slug" element={<BlogArticleRoute />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/xr-studios" element={<XRStudiosPage onStartProject={() => setIsStartModalOpen(true)} />} />
+          <Route path="/services/exhibition-design" element={<ExhibitionDesignPage onStartProject={() => setIsStartModalOpen(true)} />} />
+          <Route path="/services/film-tv-production" element={<FilmTVProductionPage />} />
+          <Route path="/services/specialty-fabrication" element={<SpecialtyFabricationPage />} />
+          <Route path="/services/interior-design" element={<InteriorDesignPage />} />
+          <Route path="/clients" element={<ClientsPage />} />
+          <Route path="/technology" element={<TechnologyPage />} />
+        </Routes>
       </main>
       <StartProjectModal isOpen={isStartModalOpen} onClose={() => setIsStartModalOpen(false)} />
-      <footer className="bg-[#f3f4f6] text-gray-600 py-12 lg:py-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-12">
-            <div>
-              <div className="flex items-center mb-6">
-                <button 
-                  onClick={() => setCurrentPage('home')}
-                  className="flex items-center space-x-3 text-xl font-normal text-black hover:opacity-70 transition-opacity"
-                >
-                  <img 
-                    src="/assets/images/di_logo_new_black.png" 
-                    alt="Design Intervention Logo" 
-                    className="w-24 h-24"
-                  />
-                </button>
-              </div>
-              <p className="leading-relaxed">
-                Where immersive design meets cutting-edge technology
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Services</h3>
-              <div className="space-y-3">
-                {footerServiceItems.map((service) => (
-                  <button
-                    key={service.id}
-                    onClick={() => setCurrentPage(service.id)}
-                    className="hover:opacity-90 cursor-pointer transition-opacity block text-left"
-                  >
-                    {service.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Contact</h3>
-              <p className="mb-2">Mumbai</p>
-              <p>projects@designintervention.biz</p>
-            </div>
-          </div>
-          <div className="border-t border-gray-300 mt-16 pt-8 text-center">
-            <p className="text-gray-600">&copy; 2025 Design Intervention India Pvt. Ltd. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer footerServiceItems={footerServiceItems} />
     </div>
   );
 }

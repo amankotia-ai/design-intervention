@@ -24,7 +24,7 @@ export const SpecialtyFabricationPage: React.FC<SpecialtyFabricationPageProps> =
 
       <ActivationsSection 
         className="mt-24"
-        label="(Fabrication Highlights)"
+        label="Fabrication Highlights"
         paragraph="Bespoke builds for exhibitions, studios, retail, and sets — technical detailing, prototyping, production, and on‑site installation under one roof."
         items={[
           { title: 'Specialty 1', src: '/assets/images/Specialty/Screenshot 2025-09-03 at 4.20.33 PM.png' },
@@ -43,7 +43,7 @@ export const SpecialtyFabricationPage: React.FC<SpecialtyFabricationPageProps> =
           <div className="grid lg:grid-cols-2 gap-20 mb-20 items-start">
             {/* Left Column - Header */}
             <div className="flex items-center text-lg font-normal" style={{ color: '#F15F22' }}>
-              <span>(Fabrication Capabilities)</span>
+              <span>Fabrication Capabilities</span>
             </div>
 
             {/* Right Column - Large Text */}
@@ -119,7 +119,7 @@ export const SpecialtyFabricationPage: React.FC<SpecialtyFabricationPageProps> =
             <div>
               {/* Header */}
               <div className="flex items-center text-lg mb-8" style={{ color: '#F15F22' }}>
-                <span>(Process)</span>
+                <span>Process</span>
               </div>
 
               <h2 className="text-4xl lg:text-5xl font-normal text-gray-900 mb-8 leading-tight">

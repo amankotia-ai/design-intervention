@@ -158,7 +158,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
             animate={{ opacity: heroInView ? 1 : 0 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span>(About Us)</span>
+            <span>About Us</span>
           </motion.div>
 
           <motion.h1 
@@ -198,7 +198,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center text-lg mb-8" style={{ color: '#F15F22' }}>
-                <span>(Our Story)</span>
+                <span>Our Story</span>
               </div>
               
               <h2 className="text-4xl lg:text-5xl font-normal text-black leading-tight mb-8">
@@ -249,7 +249,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(Our Values)</span>
+                <span>Our Values</span>
               </div>
             </motion.div>
 
@@ -332,7 +332,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(Our Team)</span>
+                <span>Our Team</span>
               </div>
             </motion.div>
 
@@ -417,7 +417,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(Our Impact)</span>
+                <span>Our Impact</span>
               </div>
             </motion.div>
 
@@ -485,7 +485,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center text-lg mb-8" style={{ color: '#F15F22' }}>
-                <span>(Visit Us)</span>
+                <span>Visit Us</span>
               </div>
               
               <h2 className="text-4xl lg:text-5xl font-normal text-black leading-tight mb-8">

@@ -36,7 +36,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {breadcrumb && (
           <div className="flex items-center text-lg mb-8" style={{ color: '#F15F22' }}>
-            <span>({breadcrumb})</span>
+            <span>{breadcrumb}</span>
           </div>
         )}
 

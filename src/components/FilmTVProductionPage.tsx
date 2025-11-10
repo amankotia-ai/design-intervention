@@ -26,7 +26,7 @@ export const FilmTVProductionPage: React.FC<FilmTVProductionPageProps> = ({ onSt
 
       <ActivationsSection 
         className="mt-24"
-        label="(Production Highlights)"
+        label="Production Highlights"
         paragraph="From hero sets to modular backdrops and specialty props—we design, fabricate and deliver for features, series and commercials."
       />
 
@@ -37,7 +37,7 @@ export const FilmTVProductionPage: React.FC<FilmTVProductionPageProps> = ({ onSt
           <div className="grid lg:grid-cols-2 gap-20 mb-20 items-start">
             {/* Left Column - Header */}
             <div className="flex items-center text-lg font-normal" style={{ color: '#F15F22' }}>
-              <span>(Production Capabilities)</span>
+              <span>Production Capabilities</span>
             </div>
 
             {/* Right Column - Large Text */}
@@ -116,7 +116,7 @@ export const FilmTVProductionPage: React.FC<FilmTVProductionPageProps> = ({ onSt
             <div>
               {/* Header */}
               <div className="flex items-center text-lg mb-8" style={{ color: '#F15F22' }}>
-                <span>(Process)</span>
+                <span>Process</span>
               </div>
 
               <h2 className="text-4xl lg:text-5xl font-normal text-gray-900 mb-8 leading-tight">

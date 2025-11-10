@@ -180,7 +180,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ className = '', onArticleCli
               ease: "easeOut" 
             }}
           >
-            <span>(Blog)</span>
+            <span>Blog</span>
           </motion.div>
 
           <motion.h1 
@@ -239,7 +239,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ className = '', onArticleCli
               }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(Featured Posts)</span>
+                <span>Featured Posts</span>
               </div>
             </motion.div>
 
@@ -352,7 +352,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ className = '', onArticleCli
               }}
             >
               <div className="flex items-center text-lg" style={{ color: '#F15F22' }}>
-                <span>(All Posts)</span>
+                <span>All Posts</span>
               </div>
             </motion.div>
 
