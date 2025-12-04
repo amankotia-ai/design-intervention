@@ -906,7 +906,8 @@ const Footer = ({ footerServiceItems }: { footerServiceItems: Array<{ id: string
           <div>
             <h3 className="text-lg font-semibold mb-6">Contact</h3>
             <p className="mb-2">Mumbai</p>
-            <p>projects@designintervention.biz</p>
+            <p>amit@designintervention.biz</p>
+            <p>+91 9820051503</p>
           </div>
         </div>
         <div className="border-t border-gray-300 mt-16 pt-8 text-center">

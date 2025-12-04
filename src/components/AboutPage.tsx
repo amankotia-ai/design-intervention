@@ -88,7 +88,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
       role: "Director - DI Mumbai",
       bio: "Design + Tech leader with 25+ years experience across 500+ projects.",
       email: "amit@designintervention.biz",
-      phone: "+91 98200 51503",
+      phone: "+91 9820051503",
       image: "/assets/images/Screenshot 2025-08-11 at 10.16.42 PM 1.png"
     },
     {
@@ -503,7 +503,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900 mb-2">Connect</h3>
-                  <p>hello@yourcompany.com<br />+91 98765 43210</p>
+                  <p>amit@designintervention.biz<br />+91 9820051503</p>
                 </div>
               </div>
             </motion.div>

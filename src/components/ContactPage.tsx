@@ -89,7 +89,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
         'Near Lotus Business Park, Andheri West',
         'Mumbai - 53'
       ],
-      phone: '+91 98200 51503',
+      phone: '+91 9820051503',
       email: 'amit@designintervention.biz',
       hours: '10:00 AM - 7:00 PM IST, Monday - Friday'
     }
@@ -100,7 +100,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
       name: 'Amit Pathania',
       role: 'Director - DI Mumbai',
       email: 'amit@designintervention.biz',
-      phone: '+91 98200 51503',
+      phone: '+91 9820051503',
       specialties: ['Design + Tech Leadership', 'Studio Strategy'],
       image: '/assets/images/Screenshot 2025-08-11 at 10.16.42 PM 1.png'
     },
@@ -317,7 +317,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
                         value={formData.phone}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 bg-white"
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 9820051503"
                         whileFocus={{ scale: 1.01 }}
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
@@ -474,7 +474,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
                     <h3 className="text-xl font-medium text-gray-900 mb-4">General Inquiries</h3>
                     <div className="space-y-2 text-gray-600">
                       <p>amit@designintervention.biz</p>
-                      <p>+91 98200 51503</p>
+                      <p>+91 9820051503</p>
                       <p>
                         <a href="https://www.designintervention.biz" className="underline hover:no-underline" target="_blank" rel="noreferrer">
                           www.designintervention.biz
