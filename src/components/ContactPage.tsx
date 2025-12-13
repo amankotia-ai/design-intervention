@@ -87,7 +87,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ className = '' }) => {
       address: [
         '307, Kilfire Premises, Daliya Industrial Estate',
         'Near Lotus Business Park, Andheri West',
-        'Mumbai - 53'
+        'Mumbai - 400053'
       ],
       phone: '+91 9820051503',
       email: 'amit@designintervention.biz',

@@ -498,7 +498,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ className = '' }) => {
                   <p>
                     307, Kilfire Premises, Daliya Industrial Estate,<br />
                     Near Lotus Business Park, Andheri West,<br />
-                    Mumbai - 53
+                    Mumbai - 400053
                   </p>
                 </div>
                 <div>
